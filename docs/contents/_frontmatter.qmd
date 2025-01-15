@@ -3,7 +3,7 @@
 
 <hr>
 
-### Syllabus
+### Welcome and Introduction
 
 <br/>
 
@@ -13,4 +13,9 @@ __Instructor__: Hasan A. Poonawala<br>
 Mechanical and Aerospace Engineering <br>
 University of Kentucky, Lexington, KY, USA
 
+__Topics__: <br>
+Optimization <br>
+Types of Problems <br>
+Algorithms <br>
+Examples <br>
 :::

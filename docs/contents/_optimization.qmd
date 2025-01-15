@@ -342,9 +342,40 @@ Modify the problem to reflect that the company has one truck for each store, and
 
 :::
 
+## Example: A Transportation Problem Solution {.smaller}
 
 
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = \sum_{i,j} c_{ij} x_{ij} && i \in \{1,2\},\ j \in \{1,\dots,12\} \\
+\text{subject to} & \sum_{j=1}^{12} x_{ij} \leq a_i, && i \in \{1,2\ \} \\
+& \sum_{i=1}^{2} x_{ij} \geq b_j, && j \in \{1,\dots,12\}\\
+& x_{ij} \geq 0, &&i \in \{1,2\},\ j \in \{1,\dots,12\} \\
+\end{align}
+$$
+
+::: {.callout-tip .fragment fragment-index=1}
+## Task
+
+Modify the problem to reflect that the company has one truck for each store, and the trucks can make only one round-trip journey to a factory each week
+
+:::
 <!-- ## Example: A Transportation Problem {.smaller} -->
 <!-- * A robot wants to forcefully push off the ground using hip/knee motor torques -->
 <!-- * However, the foot should not slip -->
 <!-- * How should we model the no-slip constraint? -->
+## Example: A Transportation Problem Solution {.smaller}
+
+
+
+$$
+\begin{align}
+\operatorname{minimize}_{x_{ij}} & f(x) = \sum_{i,j} c_{ij} x_{ij} && i \in \{1,2\},\ j \in \{1,\dots,12\} \\
+\text{subject to} & \sum_{j=1}^{12} x_{ij} \leq a_i, && i \in \{1,2\ \} \\
+& \sum_{i=1}^{2} x_{ij} \geq b_j, && j \in \{1,\dots,12\}\\
+& x_{ij} \geq 0, &&i \in \{1,2\},\ j \in \{1,\dots,12\} \\
+& \text{Either} x_{1j} \leq 0 \text{ or } x_{2j} \leq 0\\
+\end{align}
+$$
+
