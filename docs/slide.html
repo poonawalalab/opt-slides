@@ -159,9 +159,9 @@
 <h2>What is mathematical optimization?</h2>
 <p>We have a complex decision problem to solve.</p>
 <ul>
-<li class="fragment">Running a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.</li>
-<li class="fragment">Design: minimize the weight of a bridge/truss and maximize the strength within the design constraints.</li>
-<li class="fragment">Planning: select a flight route to minimize time or fuel consumption of an airplane.</li>
+<li>Running a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.</li>
+<li>Design: minimize the weight of a bridge/truss and maximize the strength within the design constraints.</li>
+<li>Planning: select a flight route to minimize time or fuel consumption of an airplane.</li>
 </ul>
 <!-- <center><img src="contents/assets/mobile.png"
              style="max-width: 50%;"/></center> -->
@@ -314,7 +314,7 @@
 \end{align}
 </annotation></semantics></math></p>
 <ul>
-<li class="fragment">The optimal solution is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}^\ast = (1, 0)</annotation></semantics></math>.</li>
+<li>The optimal solution is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}^\ast = (1, 0)</annotation></semantics></math>.</li>
 </ul>
 </div>
 </div>
@@ -489,26 +489,26 @@
 </div>
 </div></div>
 <ul>
-<li class="fragment"><p>The point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>c</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_c = (1,1)</annotation></semantics></math> has an objective value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>c</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">f(\bm{x}_c) = 4</annotation></semantics></math>, which is higher than any of its “nearby” feasible points (<em>local optimizer</em>).</p></li>
-<li class="fragment"><p>In contrast, the point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}^\ast = (-2, -2)</annotation></semantics></math> has an objective value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">f(\bm{x}^\ast) = 16</annotation></semantics></math>, which is the best among all feasible points (<em>global optimizer</em>).</p></li>
+<li><p>The point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>c</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_c = (1,1)</annotation></semantics></math> has an objective value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>c</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">f(\bm{x}_c) = 4</annotation></semantics></math>, which is higher than any of its “nearby” feasible points (<em>local optimizer</em>).</p></li>
+<li><p>In contrast, the point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}^\ast = (-2, -2)</annotation></semantics></math> has an objective value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">f(\bm{x}^\ast) = 16</annotation></semantics></math>, which is the best among all feasible points (<em>global optimizer</em>).</p></li>
 </ul>
 </section>
 <section id="problem-transcription" class="slide level2 smaller">
 <h2>Problem transcription</h2>
 <ul>
-<li class="fragment">Always involves a trade-off between conflicting goals:
+<li>Always involves a trade-off between conflicting goals:
 <ul>
-<li class="fragment">building a mathematical model that accurately captures the problem description,</li>
-<li class="fragment">building a model that is <strong>tractable</strong>.</li>
+<li>building a mathematical model that accurately captures the problem description,</li>
+<li>building a model that is <strong>tractable</strong>.</li>
 </ul></li>
-<li class="fragment">Knowledge about how mathematical optimization works helps produce better optimization problems
+<li>Knowledge about how mathematical optimization works helps produce better optimization problems
 <ul>
-<li class="fragment">You operate on a better trade-off curve</li>
+<li>You operate on a better trade-off curve</li>
 </ul></li>
-<li class="fragment">One must learn to distinguish tractable models from intractable ones
+<li>One must learn to distinguish tractable models from intractable ones
 <ul>
-<li class="fragment">study of available theory</li>
-<li class="fragment">nurturing the capability to extend existing theory to new situations.</li>
+<li>study of available theory</li>
+<li>nurturing the capability to extend existing theory to new situations.</li>
 </ul></li>
 </ul>
 </section>
@@ -636,33 +636,33 @@
 <section id="iterative-algorithms" class="slide level2">
 <h2>Iterative Algorithms</h2>
 <ul>
-<li class="fragment"><p>An initial variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\bm{x}_0</annotation></semantics></math> is selected and the algorithm generates an improved variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{x}_1</annotation></semantics></math>.</p>
+<li><p>An initial variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\bm{x}_0</annotation></semantics></math> is selected and the algorithm generates an improved variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{x}_1</annotation></semantics></math>.</p>
 <ul>
-<li class="fragment">Improvement means <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x}_1) &lt; f(\bm{x}_0)</annotation></semantics></math></li>
+<li>Improvement means <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x}_1) &lt; f(\bm{x}_0)</annotation></semantics></math></li>
 </ul></li>
-<li class="fragment"><p>This iteration is repeated to get a still better variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{x}_2</annotation></semantics></math>.</p></li>
-<li class="fragment"><p>Continuing this way, a sequence of ever-improving variables <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mn>0</mn></msub><mo>,</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">\bm{x}_0,
+<li><p>This iteration is repeated to get a still better variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{x}_2</annotation></semantics></math>.</p></li>
+<li><p>Continuing this way, a sequence of ever-improving variables <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mn>0</mn></msub><mo>,</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">\bm{x}_0,
 \bm{x}_1, \ldots, \bm{x}_k, \ldots</annotation></semantics></math> is found that approaches a solution point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>.</p></li>
-<li class="fragment"><p>For linear programming this sequence may be made finite: <strong>simplex method</strong>.</p></li>
+<li><p>For linear programming this sequence may be made finite: <strong>simplex method</strong>.</p></li>
 </ul>
 </section>
 <section id="types-of-algorithms" class="slide level2">
 <h2>Types of Algorithms</h2>
 <ul>
-<li class="fragment">The solvability of the optimality conditions for different types of optimization algorithms determine what algorithm will be suitable</li>
-<li class="fragment">Some factors that differentiate conditions:
+<li>The solvability of the optimality conditions for different types of optimization algorithms determine what algorithm will be suitable</li>
+<li>Some factors that differentiate conditions:
 <ul>
-<li class="fragment">Type of functions: convex or non-convex</li>
-<li class="fragment">Type of constraints: none, all equality, inequalities</li>
-<li class="fragment">Type of variable: continuous or discrete</li>
+<li>Type of functions: convex or non-convex</li>
+<li>Type of constraints: none, all equality, inequalities</li>
+<li>Type of variable: continuous or discrete</li>
 </ul></li>
 </ul>
 </section>
 <section id="analysis-of-algorithms" class="slide level2">
 <h2>Analysis of Algorithms</h2>
 <ul>
-<li class="fragment"><p>Algorithms must be analyzed to check if they will converge to a solution point.</p></li>
-<li class="fragment"><p>The rate at which they converge (if they do) are also analyzed: complexity analysis.</p></li>
+<li><p>Algorithms must be analyzed to check if they will converge to a solution point.</p></li>
+<li><p>The rate at which they converge (if they do) are also analyzed: complexity analysis.</p></li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important no-icon callout-style-simple">
@@ -678,9 +678,9 @@
 <h2>Size of Problems</h2>
 <p>Size: # of unknown variables and/or # of constraints.</p>
 <ul>
-<li class="fragment">small-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\leq 5</annotation></semantics></math> unknowns and constraints,</li>
-<li class="fragment">intermediate-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>−</mo><mn>100</mn><mi>/</mi><mn>1000</mn></mrow><annotation encoding="application/x-tex">5 - 100/1000</annotation></semantics></math> variables and constraints,</li>
-<li class="fragment">large-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>−</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1000 - 10^6</annotation></semantics></math> variables and constraints.</li>
+<li>small-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\leq 5</annotation></semantics></math> unknowns and constraints,</li>
+<li>intermediate-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>−</mo><mn>100</mn><mi>/</mi><mn>1000</mn></mrow><annotation encoding="application/x-tex">5 - 100/1000</annotation></semantics></math> variables and constraints,</li>
+<li>large-scale problems: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>−</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">1000 - 10^6</annotation></semantics></math> variables and constraints.</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-tip no-icon callout-style-simple">
@@ -696,12 +696,12 @@
 <section id="next-class" class="slide level2">
 <h2>Next Class:</h2>
 <ul>
-<li class="fragment">Bring a laptop</li>
-<li class="fragment">Make sure it is charged or bring a charger/chord</li>
-<li class="fragment">Be ready to run a script or compile code in your favorite language
+<li>Bring a laptop</li>
+<li>Make sure it is charged or bring a charger/chord</li>
+<li>Be ready to run a script or compile code in your favorite language
 <ul>
-<li class="fragment"><code>Python</code>, <code>Matlab</code>, <code>Julia</code> are widely used</li>
-<li class="fragment">You can use <code>C++</code> or <code>Rust</code> if you are comfortable</li>
+<li><code>Python</code>, <code>Matlab</code>, <code>Julia</code> are widely used</li>
+<li>You can use <code>C++</code> or <code>Rust</code> if you are comfortable</li>
 </ul></li>
 </ul>
 
