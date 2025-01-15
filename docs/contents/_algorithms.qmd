@@ -1,0 +1,73 @@
+# Algorithms 
+
+## Algorithms come from theory 
+
+::: {.callout-important appearance="minimal"}
+## 
+Basic optimization theory builds __necessary and sufficient optimality conditions__ that end up being a set of equations or inequalities. 
+
+Most algorithms are programs that find decision variables that satisfy ('solve') the conditions. 
+:::
+
+. . .
+
+::: {.callout-tip appearance="minimal"}
+Computers perform repetitive operations efficiently - __optimization algorithms are usually iterative__ in nature.
+:::
+
+
+
+
+## Iterative Algorithms 
+* An initial variable $\bm{x}_0$ is selected and the algorithm generates an
+improved variable $\bm{x}_1$.
+	- Improvement means $f(\bm{x}_1) < f(\bm{x}_0)$ 
+
+* This iteration is repeated to get a still better variable $\bm{x}_2$.
+
+* Continuing this way, a sequence of ever-improving variables $\bm{x}_0, 
+\bm{x}_1, \ldots, \bm{x}_k, \ldots$ is found that approaches a solution point
+$\bm{x}^\ast$.
+
+* For linear programming this sequence may be made finite: __simplex method__.
+
+
+
+## Types of Algorithms 
+
+- The solvability of the optimality conditions for different types of optimization algorithms determine what algorithm will be suitable
+- Some factors that differentiate conditions:
+	- Type of functions: convex or non-convex
+	- Type of constraints: none, all equality, inequalities
+	- Type of variable: continuous or discrete
+
+## Analysis of Algorithms 
+
+* Algorithms must be analyzed to check if they will converge to a solution
+point.
+
+* The rate at which they converge (if they do) are also analyzed: complexity
+    analysis.
+
+. . . 
+
+::: {.callout-important appearance="minimal"}
+In some cases, convergence at a slow rate is acceptable; usually not. 
+:::
+
+
+## Size of Problems 
+
+Size: \# of unknown variables and/or \# of constraints.
+
+* small-scale problems: $\leq 5$ unknowns and constraints,
+* intermediate-scale problems: $5 - 100/1000$ variables and constraints,
+* large-scale problems: $1000 - 10^6$ variables and constraints.
+
+. . .
+
+::: {.callout-tip appearance="minimal"}
+Complexity theory studies how fast the computation time increases as a function
+of the increases in the number of variables and constraints 
+:::
+

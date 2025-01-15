@@ -1,0 +1,350 @@
+# Optimization
+
+## What is mathematical optimization? {.smaller}
+
+We have a complex decision problem to solve.
+
+* Running a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.
+* Design: minimize the weight of a bridge/truss and maximize the strength within the design constraints.
+* Planning: select a flight route to minimize time or fuel consumption of an airplane.
+
+<!-- <center><img src="contents/assets/mobile.png"
+             style="max-width: 50%;"/></center> -->
+
+. . .
+
+::: {.callout-tip}
+## Philosophy
+Approach the problem of selecting values for a number of interrelated _decision variables_ by focusing attention on a single _objective function_ that quantifies the quality of the decision.
+:::
+
+. . .
+
+::: {.callout-important}
+This single objective is _optimized_ subject to the _constraints_ that may limit the selection of decision variable values.
+:::
+
+
+## Optimization Problems {.smaller}
+::: {.r-stack}
+::: {.fragment fragment-index=0 .fade-out}
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{x} \in \Omega.
+\end{align}
+$$
+
+:::
+
+::: {.fragment fragment-index=0 .fade-in}
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to}  & g_{i}(\bm{x}) \leq 0,\;\; i = 1,\dots,m\\
+ & h_{i}(\bm{x}) = 0,\;\; i = 1,\dots,p\\
+& \bm{x} \in \Omega'.
+\end{align}
+$$
+:::
+:::
+
+
+$x$: decision variables
+
+$f$: objective function
+
+$\Omega$: admissible/allowable options for $x$
+
+
+::: {.fragment fragment-index=1}
+$h_{i}$: equality constraints
+
+$g_{i}$: inequality constraints
+:::
+
+. . .
+
+::: {.callout-important appearance="minimal"}
+The type of functions $f$, $g_i$, $h_i$ determine the 'type' of optimization problem
+:::
+
+. . .
+
+::: {.callout-important appearance="minimal"}
+Most optimization books disagree on notation. 
+:::
+
+
+
+
+# Simple Examples
+
+## Convex Problems {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {.callout-tip .fragment fragment-index=0}
+## A quadratic program (QP)
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2
+\end{align}
+$$
+:::
+
+:::
+
+::: {.column width="60%"}
+
+::: {.callout-tip .fragment fragment-index=1}
+## A linearly constrained quadratic program (QP)
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2 \\
+\text{subject to} & x_1 + x_2 = 3.
+\end{align}
+$$
+:::
+
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {.callout-tip .fragment fragment-index=2}
+## A linear program (LP)
+
+$$
+\begin{align}
+\operatorname{maximize} & f(x) = 2x_1 + x_2\\
+\text{subject to} & x_1 + x_2 \leq 1, \\
+& x_1, x_2 \geq 0.
+\end{align}
+$$
+
+* The optimal solution is $\bm{x}^\ast = (1, 0)$.
+:::
+
+:::
+
+::: {.column width="60%"}
+::: {.fragment fragment-index=2}
+![](contents/assets/linear_program_feasible_set.png){fig-align="center" width=60%}
+:::
+:::
+
+::::
+
+## Conic Linear Programming {.smaller}
+
+
+::: {.nonincremental}
+Conic Linear Programming, (CLP), is a natural extension of linear programming.
+
+* In LP, variables form a vector or point that is subjected to be component-wise
+non-negative.
+* In ConicLP, they form a point in a general pointed convex cone such as a vector or
+a matrix.
+
+::: 
+
+:::: {.columns}
+
+::: {.column width="33%" .fragment fragment-index=0}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& x_1, x_2, x_3 \geq \mathbf {0},
+\end{align}
+$$
+:::
+
+
+::: {.column width="33%" .fragment fragment-index=1}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \sqrt{x_2^2 + x_3^2} \leq x_1,
+\end{align}
+$$
+:::
+
+::: {.column width="33%" .fragment fragment-index=2}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \begin{pmatrix} x_1 & x_2 \\ x_2 & x_3 \end{pmatrix}\succeq \mathbf 0.
+\end{align}
+$$
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="33%" .fragment fragment-index=0}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a vector in the nonnegative orthant cone.
+:::
+
+::: {.callout-tip appearance="minimal"}
+A cone is a set $K$ where $x \in K \implies \lambda x \in K$ for all $\lambda \geq 0$.
+:::
+:::
+
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal" .fragment fragment-index=1}
+Constraints form a vector in a cone shaped like an ice-cream cone, called a
+second-order cone.
+:::
+
+:::
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal" .fragment fragment-index=2}
+Constraints form a $2$-dimensional symmetric matrix required to be positive
+semidefinite or to be in a semidefinite cone.
+:::
+
+:::
+
+::::
+
+## Nonlinear Problems {.smaller}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip .fragment fragment-index=1}
+## A convex nonlinear problem
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = (x_1-2)^2 + (x_2-1)^2\\
+\text{subject to} & x_1^2 - x_2 \leq 0, \\
+&x_1 + x_2 \leq 2. \\
+\end{align}
+$$
+
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index=1}
+![](contents/assets/NW_fig1pt1.png){fig-align="center" width=80%}
+:::
+:::
+
+
+:::
+
+. . .
+
+
+::: {.callout-important}
+Convex vs non-convex is more important than linear vs nonlinear. 
+:::
+
+## Nonlinear Problems {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip .fragment fragment-index=1}
+## A nonlinear program (NLP)
+
+$$
+\begin{align}
+\operatorname{maximize} & f(x) = (x_1+x_2)^2\\
+\text{subject to} & x_1x_2 \geq 0, \\
+& -2 \leq x_1 \leq 1, \\
+& -2 \leq x_2 \leq 1.
+\end{align}
+$$
+
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index=1}
+![](contents/assets/nonlinear_program.png){fig-align="center" width=80%}
+:::
+:::
+
+::::
+
+
+* The point $\bm{x}_c = (1,1)$ has an objective value $f(\bm{x}_c) = 4$, which
+is higher than any of its "nearby" feasible points (_local optimizer_).
+
+* In contrast, the point $\bm{x}^\ast = (-2, -2)$ has an objective value
+$f(\bm{x}^\ast) = 16$, which is the best among all feasible points (_global
+optimizer_).
+
+
+
+## Problem transcription {.smaller}
+
+* Always involves a trade-off between conflicting goals:
+  - building a mathematical model that accurately captures the problem description,
+  - building a model that is __tractable__.
+* Knowledge about how mathematical optimization works helps produce better optimization problems
+	- You operate on a better trade-off curve 
+* One must learn to distinguish tractable models from intractable ones
+  - study of available theory
+  - nurturing the capability to extend existing theory to new situations.
+
+
+## Example: A Transportation Problem {.smaller}
+
+::: {.callout-tip .nonincremental .fragment fragment-index=0}
+## Scene / Data
+- A chemical company has 2 factories $F_{1}$ and $F_{2}$ and a dozen retail outlets $R_{1}$,$R_{2}$,$\dots$,$R_{12}$.
+- Each factory $F_{i}$ can produce $a_{i}$ tons of a certain chemical product each week; $a_{i}$ is called the capacity of the plant. 
+- Each retail outlet $R_{j}$ has a known weekly demand of $b_{j}$ tons of the product.
+- The cost of shipping one ton of the product from factory $F_i$ to retail outlet $R_j$ is $c_{ij}.$
+:::
+
+
+::: {.callout-tip .fragment fragment-index=1}
+## Task
+
+Model the problem of choosing how much product to ship from each factory to each outlet so that the company meets demand at the least cost. 
+
+:::
+
+
+::: {.callout-tip .fragment fragment-index=2}
+## Task
+
+Modify the problem to reflect that the company has one truck for each store, and the trucks can make only one round-trip journey to a factory each week
+
+:::
+
+
+
+<!-- ## Example: A Transportation Problem {.smaller} -->
+<!-- * A robot wants to forcefully push off the ground using hip/knee motor torques -->
+<!-- * However, the foot should not slip -->
+<!-- * How should we model the no-slip constraint? -->

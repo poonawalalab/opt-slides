@@ -1,0 +1,16 @@
+## Optimization Theory and Practice {.center .smaller}
+<!-- ###################################################################### -->
+
+<hr>
+
+### Syllabus
+
+<br/>
+
+::: {layout="[120, 60]"}
+__Instructor__: Hasan A. Poonawala<br>
+<br>
+Mechanical and Aerospace Engineering <br>
+University of Kentucky, Lexington, KY, USA
+
+:::

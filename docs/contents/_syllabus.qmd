@@ -1,0 +1,30 @@
+
+
+## Contact Info
+
+|  |  |
+|:---|:---|
+|  Instructor| Hasan A. Poonawala |
+|  Office Address| Grehan 113G|
+|  Email| hasan.poonawala@uky.edu  |
+|  Office Hours| TBD |
+
+Course Delivery: In-person (Zoom ICE)
+
+
+## Textbooks
+
+![NW](contents/assets/nocedalwright.png){fig-align="center" width=30%}
+![NW](contents/assets/chongzak.png){fig-align="center" width=30%}
+![NW](contents/assets/bv_cvxbook_cover.jpg){fig-align="center" width=30%}
+
+
+## Assessment
+
+|  |  |
+|:---|:---|
+|  Quizzes| 10% |
+|  Homework | 10% |
+|  Mid-term Exams| 20% |
+|  Mid-term Projects| 40% |
+|  Final Exam/Project| 20% |

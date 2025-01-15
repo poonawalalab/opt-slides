@@ -1,0 +1,198 @@
+<!-- # Types of Problems {visibility="uncounted"} -->
+# Types of Problems
+
+## Linear Programming {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Linear programming (LP) is the most natural mechanism for formulating a vast 
+array of problems with modest effort.
+
+* LPs are characterized by linear functions of the unknowns:
+  - objective is linear in the unknowns,
+  - constraints are linear (in)equalities in the unknowns.
+
+* LP formulations are popular because
+  - mathematics is nicer,
+  - the theory is richer,
+  - the computation is simpler.
+
+:::
+
+::: {.column width="50%"}
+
+* Consider a budget problem:
+  - Total amount of money is to be allocated among two different commodities:
+  $$ 
+  x_1 + x_2 \leq B
+  $$
+  - Objective is to maximize the weight:
+  $$
+  w_1 x_1 + w_2 x_2
+  $$
+  where $w_j, \, j=1,2$ is the unit weight of commodity $j$.
+  - The overall problem would be expressed as
+  $$
+  \begin{align}
+    \max\ & w_1x_1 + w_2x_2 \\
+    \text{subject to } & x_1 + x_2 \leq B, \\
+     &x_1, x_2 \geq 0.
+  \end{align}
+  $$
+:::
+
+::::
+
+## Conic Linear Programming {.smaller}
+
+Conic Linear Programming, (CLP), is a natural extension of linear programming.
+
+* In LP, variables form a vector or point that is subjected to be componentwise
+nonnegative.
+* In CLP, they form a point in a general pointed convex cone such as a vector or
+a matrix.
+
+:::: {.columns}
+
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& x_1, x_2, x_3 \geq \mathbf {0},
+\end{align}
+$$
+:::
+
+
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \sqrt{x_2^2 + x_3^2} \leq x_1,
+\end{align}
+$$
+:::
+
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \begin{pmatrix} x_1 & x_2 \\ x_2 & x_3 \end{pmatrix}\succeq \mathbf 0.
+\end{align}
+$$
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a vector in the nonnegative orthant cone.
+:::
+
+:::
+
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a vector in a cone shaped like an ice-cream cone, called a
+second-order cone.
+:::
+
+:::
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a $2$-dimensional symmetric matrix required to be positive
+semidefinite or to be in a semidefinite cone.
+:::
+
+:::
+
+::::
+
+
+
+## Unconstrained Problems {.smaller}
+
+
+::: {.fragment fragment-index=0 .fade-up}
+Are unconstrained optimization problems are so devoid of structural
+properties as to preclude their applicability as useful models of meaningful
+problems?
+:::
+
+::: {.fragment fragment-index=1}
+__No!__
+
+::: {.incremental}
+* Constraints may often be relaxed and built into the cost/objective function.
+* Sometimes (equality) constraints may be solved and these degrees of freedom
+may be eliminated.
+  - $x_1 + x_2 = B$ may be eliminated by substituting $x_2 = B - x_1$.
+
+* The study of unconstrained problems provides a _stepping stone_ toward the
+more general case of constrained problems.
+  - Many aspects of both theory and algorithms are most naturally motivated and
+    verified for the unconstrained case before progressing to the constrained
+    case.
+:::
+:::
+
+
+
+## Constrained Problems {.smaller}
+
+Many problems met in practice are consrained problems that cannot be represented
+or massaged ino unconstrained ones.
+
+* General mathematical programming problem is
+$$
+\begin{align}
+\operatorname{minimize} & f(\mathbf{x}) \\
+\text{subject to} & h_i(\mathbf{x}) = 0, \; i=1, 2, \ldots, m \\
+ & g_i(\mathbf{x}) \geq 0, \; i=1, 2, \ldots, p \\
+ &\mathbf{s} \in S.
+\end{align}
+$$
+
+* We do not focus on discrete programming in this course; i.e., our variables
+$\mathbf{x}$ live in a space that is continuous (for example $\mathbf{x} \in \mathbb{R}^n$).
+
+
+## Size of Problems {.smaller}
+
+Size: \# of unknown variables and/or \# of constraints.
+
+* small-scale problems: $\leq 5$ unknowns and constraints,
+* intermediate-scale problems: $5 - 100/1000$ variables and constraints,
+* large-scale problems: $1000 - 10^6$ variables and constraints.
+
+. . .
+
+:::{.callout-tip appearance="minimal"}
+Complexity theory studies how fast the computation time increases as a function
+of the increases in the number of variables and constraints ($P \neq NP$?).
+:::
+
+. . .
+
+:::{.callout-important appearance="default"}
+## Necessary and Sufficient Optimality Conditions
+Much of the basic theory associated with optimization is directed towards
+obtaining these conditions as a set of equations or inequalities.
+
+* Typically, one cannot solve the necessary conditions (as complex as solving the
+original optimization problem).
+* Instead, a more direct approach is used: search through the space for
+ever-improving points.
+:::
