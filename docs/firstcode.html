@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index</title>
+<title>firstcode</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,17 +23,46 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js"></script>
-<script src="index_files/libs/quarto-html/popper.min.js"></script>
-<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
-<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="firstcode_files/libs/clipboard/clipboard.min.js"></script>
+<script src="firstcode_files/libs/quarto-html/quarto.js"></script>
+<script src="firstcode_files/libs/quarto-html/popper.min.js"></script>
+<script src="firstcode_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="firstcode_files/libs/quarto-html/anchor.min.js"></script>
+<link href="firstcode_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="firstcode_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="firstcode_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="firstcode_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="firstcode_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -46,13 +75,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="meaer-647-slides" class="level2">
-<h2 class="anchored" data-anchor-id="meaer-647-slides">ME/AER 647 Slides:</h2>
+<section id="tasks" class="level2">
+<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <ol type="1">
-<li><a href="https://poonawalalab.github.io/opt-slides/syllabus.html">Syllabus</a></li>
-<li><a href="https://poonawalalab.github.io/opt-slides/slide.html">Welcome and Introduction</a></li>
-<li><a href="firstcode.html">CVX</a></li>
-<li><a href="uncon.html">Unconstrained Optimization</a></li>
+<li>Solve the following linear system by constructing the corresponding matrix and vector: <span class="math display">\[\begin{bmatrix}1 &amp; 2 &amp;3\\4 &amp; 5 &amp; 6 \\ -1 &amp; 2 &amp; -1\end{bmatrix} x= \begin{bmatrix}\text{first digit in uk id}\\\text{second digit in uk id}\\\text{third digit in uk id}\end{bmatrix}\]</span></li>
+<li>Install <code>cvx</code> for your preferred language: <a href="https://cvxr.com/cvx/">Matlab</a> or <a href="https://www.cvxpy.org/">Python</a></li>
+<li>Run the basic linear programming example <a href="https://www.cvxpy.org/examples/basic/linear_program.html">Python</a> or <a href="https://web.cvxr.com/cvx/examples/html/simple_LP2.html">Matlab</a></li>
 </ol>
 </section>
 
