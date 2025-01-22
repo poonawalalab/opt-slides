@@ -30,6 +30,7 @@
     }
   </style>
   <link rel="stylesheet" href="uncon_files/libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="uncon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="uncon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="uncon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -172,7 +173,7 @@
 <p><strong>Local minimizer</strong></p>
 </div>
 <div class="callout-content">
-<p>A point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^{*}</annotation></semantics></math> is a <em>local minimizer</em> if there is a neighborhood <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒩</mi><annotation encoding="application/x-tex">\mathcal N</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^*</annotation></semantics></math> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x^*) \leq f(x)</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>𝒩</mi></mrow><annotation encoding="application/x-tex">x \in \mathcal N</annotation></semantics></math>, where a neighbor of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> is an open set containing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
+<p>A point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^{*}</annotation></semantics></math> is a <em>local minimizer</em> if there is a neighborhood <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒩</mi><annotation encoding="application/x-tex">\mathcal N</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^*</annotation></semantics></math> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x^*) \leq f(x)</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>𝒩</mi></mrow><annotation encoding="application/x-tex">x \in \mathcal N</annotation></semantics></math>, where a neighborhood of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> is an open set containing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.</p>
 </div>
 </div>
 </div>
@@ -265,15 +266,66 @@
 </div>
 </div>
 </section>
-<section id="test" class="slide level2">
-<h2>Test</h2>
+<section id="overview-of-algorithms" class="slide level2">
+<h2>Overview of Algorithms</h2>
+<ul>
+<li>Recall that the algorithms are iterative</li>
+<li>We need a starting point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\mathbf x_0</annotation></semantics></math></li>
+<li>… and a method to produce iterates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\mathbf{x}_1</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\mathbf{x}_2</annotation></semantics></math>,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>…</mi><annotation encoding="application/x-tex">\dots</annotation></semantics></math></li>
+<li>Generally two methods:
+<ul>
+<li>Line Search</li>
+<li>Trust Region</li>
+</ul></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The words method and algorithm are used interchangeably</p>
+</div>
+</div>
+</div>
+</section>
+<section id="line-search-methods" class="slide level2">
+<h2>Line Search Methods</h2>
+<ul>
+<li>The algorithm chooses a direction <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">p_k \in \mathbb{R}^n</annotation></semantics></math></li>
+<li>Then, minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> on the line defined by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_k + \alpha p_k</annotation></semantics></math>. That is, solve <span id="eq-nine"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mrow><mi>α</mi><mo>&gt;</mo><mn>0</mn></mrow></munder><mspace width="1.0em"></mspace><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>p</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\min_{\alpha&gt;0}\quad f(\mathbf{x}_k + \alpha p_k) \qquad(1)</annotation></semantics></math></span>
+<ul>
+<li>In practice choose an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> that makes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\mathbf{x}_{k+1}) &lt; f(\mathbf{x}_{k})</annotation></semantics></math>, not solve <a href="#/eq-nine" class="quarto-xref">Equation&nbsp;1</a>.</li>
+<li>Practical method uses back-tracking line search</li>
+</ul></li>
+<li>Common direction: negative gradient (steepest descent)</li>
+</ul>
+</section>
+<section id="trust-region-methods" class="slide level2">
+<h2>Trust Region Methods</h2>
+<ul>
+<li>Approximate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> using a model function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math></li>
+<li>Minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> by solving <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mi>p</mi></munder></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>m</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">s.t.</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo>∈</mo><mtext mathvariant="normal">Trust region</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\min_{p} &amp; m_k\left(\mathbf{x}_k+p\right)\\
+\text{s.t.} &amp; \mathbf{x}_k+p \in \text{Trust region}
+\end{align}
+</annotation></semantics></math></li>
+<li>Common choice: local quadratic Taylor series, with a spherical trust region</li>
+</ul>
+</section>
+<section id="example-line-search-algorithms" class="slide level2 smaller">
+<h2>Example: Line Search Algorithms</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.5</mn><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
 \operatorname{minimize} &amp; f(x) = (0.5 x_1 - 2)^2 + (x_2 - 3)^2
 \end{align}
 </annotation></semantics></math></p>
-<div class="center">
-<div id="a9d29229" class="cell" data-execution_count="1">
+<div class="centered-content">
+<div id="f3b56d00" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
