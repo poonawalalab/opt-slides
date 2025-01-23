@@ -34,6 +34,8 @@
   <link href="uncon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="uncon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="uncon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="uncon_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="uncon_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="uncon_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -237,7 +239,27 @@
 </div>
 </div>
 </div>
-</section>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Positive semidefinite matrix</strong></p>
+</div>
+<div class="callout-content">
+<p>A matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math> is positive semidefinite, denoted<sup>1</sup> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≽</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M \succeq 0</annotation></semantics></math>, if <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mi>T</mi></msup><mi>M</mi><mi>x</mi><mo>≥</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>∀</mo><mi>x</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">x ^T M x \geq 0\quad \forall x \in \mathbb{R}^n.</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msup><mi>H</mi><mi>T</mi></msup><mi>H</mi></mrow><annotation encoding="application/x-tex">M = H^T H</annotation></semantics></math> for some real matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math> is positive semidefinite.</p>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>or sometimes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M \geq 0</annotation></semantics></math></p></li></ol></aside></section>
 <section id="second-order-sufficient-condition" class="slide level2">
 <h2>Second-order Sufficient Condition</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
@@ -250,7 +272,20 @@
 </div>
 </div>
 </div>
-</section>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Positive semidefinite matrix</strong></p>
+</div>
+<div class="callout-content">
+<p>A matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math> is positive definite, denoted<sup>1</sup> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≻</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M \succ 0</annotation></semantics></math>, if <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mi>T</mi></msup><mi>M</mi><mi>x</mi><mo>&gt;</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>∀</mo><mi>x</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>,</mo><mspace width="0.222em"></mspace><mi>x</mi><mo>≠</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">x ^T M x &gt; 0\quad \forall x \in \mathbb{R}^n,\ x \neq 0.</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>or sometimes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M &gt; 0</annotation></semantics></math></p></li></ol></aside></section>
 <section id="first-order-sufficient-condition" class="slide level2">
 <h2>First-order Sufficient Condition</h2>
 <p>There is no first-order sufficient condition for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> when it is <strong>only differentiable</strong></p>
@@ -316,7 +351,7 @@
 </tr>
 </tbody>
 </table>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Local Minimizer</p></li><li id="fn2"><p>Global Minimizer</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Local Minimizer</p></li><li id="fn4"><p>Global Minimizer</p></li></ol></aside></section>
 <section id="overview-of-algorithms" class="slide level2">
 <h2>Overview of Algorithms</h2>
 <ul>
@@ -376,7 +411,7 @@
 \end{align}
 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="5729ee83" class="cell" data-execution_count="1">
+<div id="0325de0d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -386,6 +421,64 @@
 </div>
 </div>
 </div>
+</section>
+<section id="plotting-code" class="slide level2 smaller">
+<h2>Plotting Code</h2>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+# Define the objective function and its gradient and Hessian
+def f(x, y):
+    return #&lt;answer&gt;
+
+def grad_f(x, y):
+    """Gradient of f"""
+    return np.array()
+
+def hess_f(x, y):
+    """Hessian of f"""
+    return np.array()
+
+
+# Steepest Descent
+def steepest_descent(start, alpha=0.1,tol=1e-6, max_iter=50):
+    # your code
+    return x, iterates
+
+
+# Plotting
+x = np.linspace(-1, 4, 100)
+y = np.linspace(-1, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = f(X, Y)
+
+plt.figure(figsize=(8, 6))
+# Contour plot of the objective function
+contour = plt.contour(X, Y, Z, levels=30, cmap="viridis")
+plt.clabel(contour, inline=True, fontsize=8)
+plt.colorbar(contour, label="Objective Function Value")
+
+plt.plot(4, 3, 'x', color="blue", markersize=10, label="True Optimum (4, 3)")
+
+# Run Steepest Descent
+start_point = [-1.0, 1.0]
+optimum, iterates = steepest_descent(start_point)
+# Extract iterate points for plotting
+iterates = np.array(iterates)
+x_iterates, y_iterates = iterates[:, 0], iterates[:, 1]
+plt.plot(x_iterates, y_iterates, 'o-', color="blue", label="SD Iterates alpha=0.1")
+
+# Annotate start and end points
+plt.annotate("Start", (x_iterates[0], y_iterates[0]), textcoords="offset points", xytext=(-10, 10), ha="center", color="red")
+plt.annotate("End", (x_iterates[-1], y_iterates[-1]), textcoords="offset points", xytext=(-10, -15), ha="center", color="red")
+
+# Labels and legend
+plt.xlabel("x_1")
+plt.ylabel("x_2")
+plt.title("Newton's Method for Optimization")
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre>
 
 </section>
 
@@ -403,6 +496,7 @@
   <script src="uncon_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="uncon_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="uncon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="uncon_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="uncon_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -423,7 +517,8 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":3},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -577,7 +672,7 @@
         margin: 0.1,
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealNotes,
           RevealSearch,
