@@ -289,7 +289,17 @@
 <section id="first-order-sufficient-condition" class="slide level2">
 <h2>First-order Sufficient Condition</h2>
 <p>There is no first-order sufficient condition for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> when it is <strong>only differentiable</strong></p>
-<p>However, when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is also convex, there is:</p>
+<p>However, when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is also convex, there is.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Convex functions</strong></p>
+</div>
+<div class="callout-content">
+<p>A function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>𝒟</mi><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">f \colon \mathcal D \to \mathbb R</annotation></semantics></math> is convex if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒟</mi><annotation encoding="application/x-tex">\mathcal D</annotation></semantics></math> is a convex set and f <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mi>x</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>λ</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f( \lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda) f(y)</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>∈</mo><mi>𝒟</mi></mrow><annotation encoding="application/x-tex">x,y \in \mathcal D</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\lambda \in [0,1]</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -385,22 +395,18 @@
 <li>Then, minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> on the line defined by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\mathbf{x}_k + \alpha p_k</annotation></semantics></math>. That is, solve <span id="eq-nine"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mrow><mi>α</mi><mo>&gt;</mo><mn>0</mn></mrow></munder><mspace width="1.0em"></mspace><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>p</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\min_{\alpha&gt;0}\quad f(\mathbf{x}_k + \alpha p_k) \qquad(1)</annotation></semantics></math></span>
 <ul>
 <li>In practice choose an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> that makes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\mathbf{x}_{k+1}) &lt; f(\mathbf{x}_{k})</annotation></semantics></math>, not solve <a href="#/eq-nine" class="quarto-xref">Equation&nbsp;1</a>.</li>
-<li>Practical method uses back-tracking line search</li>
+<li>Practical method uses back-tracking line search to pick <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>k</mi></msub><annotation encoding="application/x-tex">p_k</annotation></semantics></math></li>
 </ul></li>
-<li>Common direction: negative gradient (steepest descent)</li>
 </ul>
 </section>
-<section id="trust-region-methods" class="slide level2">
-<h2>Trust Region Methods</h2>
+<section id="line-search-methods-1" class="slide level2">
+<h2>Line Search Methods</h2>
 <ul>
-<li>Approximate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> using a model function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math></li>
-<li>Minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> by solving <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mi>p</mi></munder></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>m</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">s.t.</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo>∈</mo><mtext mathvariant="normal">Trust region</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">
-\begin{align}
-\min_{p} &amp; m_k\left(\mathbf{x}_k+p\right)\\
-\text{s.t.} &amp; \mathbf{x}_k+p \in \text{Trust region}
-\end{align}
-</annotation></semantics></math></li>
-<li>Common choice: local quadratic Taylor series, with a spherical trust region</li>
+<li>Two common choices for directions.
+<ul>
+<li>Negative gradient (steepest descent) <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p_k = - \nabla f(\mathbf{x}_{k})</annotation></semantics></math></li>
+<li>Newton direction: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>∇</mi><mn>2</mn></msup><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p_k = - (\nabla^2 f(\mathbf{x}_{k}))^{-1}\nabla f(\mathbf{x}_{k})</annotation></semantics></math></li>
+</ul></li>
 </ul>
 </section>
 <section id="example-line-search-algorithms" class="slide level2 smaller">
@@ -411,16 +417,32 @@
 \end{align}
 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="0325de0d" class="cell" data-execution_count="1">
+<div id="65756ab6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="uncon_files/figure-revealjs/cell-2-output-1.png" width="652" height="523"></p>
+<p><img data-src="uncon_files/figure-revealjs/cell-2-output-1.png" width="641" height="523"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
+<div class="fragment" style="position:absolute;top:100px;right:-200px" data-fragment-index="1">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Newton’s method is not always better</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Wish there was an easy overlay option -->
 </section>
 <section id="plotting-code" class="slide level2 smaller">
 <h2>Plotting Code</h2>
@@ -475,12 +497,35 @@ plt.annotate("End", (x_iterates[-1], y_iterates[-1]), textcoords="offset points"
 # Labels and legend
 plt.xlabel("x_1")
 plt.ylabel("x_2")
-plt.title("Newton's Method for Optimization")
+plt.title("Steepest Descent vs Newton's Method for Optimization")
 plt.legend()
 plt.grid(True)
 plt.show()</code></pre>
-
 </section>
+<section id="trust-region-methods" class="slide level2">
+<h2>Trust Region Methods</h2>
+<ul>
+<li>Approximate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> using a model function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math></li>
+<li>Minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mathbf{x}_k</annotation></semantics></math> by solving <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mi>p</mi></munder></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>m</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">s.t.</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo>∈</mo><mtext mathvariant="normal">Trust region</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\min_{p} &amp; m_k\left(\mathbf{x}_k+p\right)\\
+\text{s.t.} &amp; \mathbf{x}_k+p \in \text{Trust region}
+\end{align}
+</annotation></semantics></math></li>
+<li>Common choice: local quadratic Taylor series, with a spherical trust region<br>
+(trust-region Newton’s method)</li>
+</ul>
+</section>
+<section id="line-search-and-trust-region-methods" class="slide level2">
+<h2>Line Search and Trust Region Methods</h2>
+<p>In some cases, the two methods overlap <sup>1</sup> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mi>p</mi></munder></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>m</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>p</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>f</mi><mi>K</mi></msub><mo>+</mo><msup><mi>p</mi><mi>T</mi></msup><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">s.t.</mtext></mtd><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="postfix">∥</mo><mi>p</mi><msub><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msub><mo>≤</mo><mi>α</mi><mo stretchy="false" form="postfix">∥</mo><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub><msub><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+  \min_{p} &amp; m_k\left(\mathbf{x}_k+p\right) = f_K + p^T \nabla f_k\\
+\text{s.t.} &amp; \| p\|_2 \leq \alpha \| \nabla f_k\|_2
+\end{align} 
+  </annotation></semantics></math>yields <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>−</mi><mi>α</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p = - \alpha \nabla f_{k}</annotation></semantics></math></p>
+
+<aside><ol class="aside-footnotes"><li id="fn5"><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_k = f(\mathbf{x}_k)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla f_k = \nabla f(\mathbf{x}_k)</annotation></semantics></math></p></li></ol></aside></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
