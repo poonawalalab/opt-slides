@@ -416,8 +416,10 @@
 \operatorname{minimize} &amp; f(x) = (0.5 x_1 - 2)^2 + (x_2 - 3)^2
 \end{align}
 </annotation></semantics></math></p>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="centered-content">
-<div id="b107918c" class="cell" data-execution_count="1">
+<div id="844bc4c8" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -427,7 +429,19 @@
 </div>
 </div>
 </div>
-<div class="fragment" style="position:absolute;top:100px;right:-100px" data-fragment-index="1">
+<!-- ends centered content -->
+</div><!-- ends centered content --><div class="column" style="width:39%;">
+<div id="c3cba48f" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="uncon_files/figure-revealjs/cell-3-output-1.png" width="659" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment" style="position:absolute;top:50px;right:-70px" data-fragment-index="1">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -524,8 +538,17 @@ plt.show()</code></pre>
 \text{s.t.} &amp; \| p\|_2 \leq \alpha \| \nabla f_k\|_2
 \end{align} 
   </annotation></semantics></math>yields <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>−</mi><mi>α</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p = - \alpha \nabla f_{k}</annotation></semantics></math></p>
-
 <aside><ol class="aside-footnotes"><li id="fn5"><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_k = f(\mathbf{x}_k)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla f_k = \nabla f(\mathbf{x}_k)</annotation></semantics></math></p></li></ol></aside></section>
+<section id="exercise-steepest-descent" class="slide level2">
+<h2>Exercise: Steepest Descent</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mn>10</mn><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f(x) = (1 - x_1)^2 + 10 (x_2 - x_1^2)^2  %a = 1, b = 10
+\end{align}
+</annotation></semantics></math></p>
+<p>The optimum is at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>. Test the behavior of steepest descent algorithms <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_{k+1} = x_{k} - \alpha \nabla f_k</annotation></semantics></math> with various constant values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, starting from <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,1)</annotation></semantics></math>.</p>
+
+</section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
