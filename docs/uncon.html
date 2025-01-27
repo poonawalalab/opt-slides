@@ -419,7 +419,7 @@
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="centered-content">
-<div id="844bc4c8" class="cell" data-execution_count="1">
+<div id="efd9203b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -431,7 +431,7 @@
 </div>
 <!-- ends centered content -->
 </div><!-- ends centered content --><div class="column" style="width:39%;">
-<div id="c3cba48f" class="cell" data-execution_count="2">
+<div id="78a909cb" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -539,7 +539,7 @@ plt.show()</code></pre>
 \end{align} 
   </annotation></semantics></math>yields <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>−</mi><mi>α</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p = - \alpha \nabla f_{k}</annotation></semantics></math></p>
 <aside><ol class="aside-footnotes"><li id="fn5"><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_k = f(\mathbf{x}_k)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla f_k = \nabla f(\mathbf{x}_k)</annotation></semantics></math></p></li></ol></aside></section>
-<section id="exercise-steepest-descent" class="slide level2">
+<section id="exercise-steepest-descent" class="slide level2 smaller">
 <h2>Exercise: Steepest Descent</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mn>10</mn><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
@@ -547,6 +547,29 @@ plt.show()</code></pre>
 \end{align}
 </annotation></semantics></math></p>
 <p>The optimum is at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>. Test the behavior of steepest descent algorithms <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_{k+1} = x_{k} - \alpha \nabla f_k</annotation></semantics></math> with various constant values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, starting from <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,1)</annotation></semantics></math>.</p>
+</section>
+<section id="solution" class="slide level2 smaller">
+<h2>Solution</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>40</mn><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>x</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>20</mn><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>2</mn><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex"> \nabla f = \begin{bmatrix} -2(1-x_1) - 40 (x_2 - x_1^2) x_1\\ 20 (x_2-x_2^2)\end{bmatrix} </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="centered-content">
+<div id="91585a6d" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="uncon_files/figure-revealjs/cell-4-output-1.png" width="1278" height="524"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<!-- ends centered content -->
+<!-- Wish there was an easy overlay option -->
 
 </section>
 
