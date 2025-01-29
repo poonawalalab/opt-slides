@@ -1,6 +1,4 @@
 /.quarto/
-docs/contents/.DS_Store
-docs/contents/assets/.DS_Store
 **/*.qmd
 **/*.nojekyll
 **/*.vim
