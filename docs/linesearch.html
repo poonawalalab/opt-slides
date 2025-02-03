@@ -216,7 +216,7 @@
 <p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_k = x^{\star} + y</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_{k+1} = x^{\star} -y</annotation></semantics></math></p>
 </div><div class="column" style="width:60%;">
 <div class="centered-content">
-<div id="73e64aa6" class="cell" data-execution_count="1">
+<div id="56773bae" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -271,7 +271,7 @@
 <h2>Example Wolfe Conditions</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> min_{x \in \mathbb{R}} f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="d32c37d8" class="cell" data-execution_count="2">
+<div id="b5f68ba1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -299,7 +299,7 @@
 <h2>Backtracking Example</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="b659ca76" class="cell" data-execution_count="3">
+<div id="89862fbd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -465,7 +465,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="d94bf86a" class="cell" data-execution_count="4">
+<div id="edbe7930" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -486,7 +486,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="8d29e77e" class="cell" data-execution_count="5">
+<div id="1307e97e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -496,11 +496,41 @@
 </div>
 </div>
 </div>
+</section>
+<section id="example-newtons-method" class="slide level2 smaller">
+<h2>Example Newton’s Method</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>We want to find the minimizer of</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mo>sin</mo><mi>x</mi><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(x) = \frac{1}{2}x^2 - \sin{x}, \quad x_0 = \frac{1}{2}. </annotation></semantics></math></p>
+<ul>
+<li>We want an accuracy of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\varepsilon = 10^{-5}</annotation></semantics></math>, i.e., stop when</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><mi>ε</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> |x_{k+1} - x_k | &lt; \varepsilon. </annotation></semantics></math></p>
+<ul>
+<li>We compute</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>x</mi><mo>−</mo><mo>cos</mo><mi>x</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><mo>sin</mo><mi>x</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> f'(x) = x - \cos{x}, \quad f''(x) = 1 + \sin{x}. </annotation></semantics></math></p>
+</div><div class="column" style="width:50%;">
+<p><br> <br> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mfrac><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mo>cos</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mrow><mn>1</mn><mo>+</mo><mo>sin</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac><mo>=</mo><mn>0.7552</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mfrac><mn>0.02710</mn><mn>1.685</mn></mfrac><mo>=</mo><mn>0.7391</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>3</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mfrac><mrow><mn>9.461</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup></mrow><mn>1.673</mn></mfrac><mo>=</mo><mn>0.7390</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><mfrac><mrow><mn>1.17</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>9</mn></mrow></msup></mrow><mn>1.673</mn></mfrac><mo>=</mo><mn>0.7390</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+x_1 &amp;= \frac{1}{2} - \frac{\frac{1}{2} - \cos{\frac{1}{2}}}{1 +
+\sin{\frac{1}{2}}} = 0.7552, \\
+x_2 &amp;= x_1 - \frac{f'(x_1)}{f''(x_1)} = x_1 - \frac{0.02710}{1.685} = 0.7391, \\
+x_3 &amp;= x_2 - \frac{f'(x_2)}{f''(x_2)} = x_2 - \frac{9.461 \times 10^{-5}}{1.673}
+= 0.7390, \\
+x_4 &amp;= x_3 - \frac{f'(x_3)}{f''(x_3)} = x_3 - \frac{1.17 \times 10^{-9}}{1.673}
+= 0.7390.
+\end{align}
+</annotation></semantics></math></p>
+</div></div>
 <!-- Wish there was an easy overlay option -->
 </section>
 <section id="newtons-method" class="slide level2">
 <h2>Newton’s Method</h2>
-<div id="4dc6aa99" class="cell" data-execution_count="6">
+<div id="d465d1dc" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
