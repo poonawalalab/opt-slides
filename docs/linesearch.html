@@ -216,7 +216,7 @@
 <p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_k = x^{\star} + y</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_{k+1} = x^{\star} -y</annotation></semantics></math></p>
 </div><div class="column" style="width:60%;">
 <div class="centered-content">
-<div id="33df5015" class="cell" data-execution_count="1">
+<div id="98fc872b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -271,7 +271,7 @@
 <h2>Example Wolfe Conditions</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> min_{x \in \mathbb{R}} f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="31deca0d" class="cell" data-execution_count="2">
+<div id="ab3b19e8" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -299,7 +299,7 @@
 <h2>Backtracking Example</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="fc73a467" class="cell" data-execution_count="3">
+<div id="f08cf787" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -463,7 +463,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="71020874" class="cell" data-execution_count="4">
+<div id="bd405fdd" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -484,7 +484,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="cd136c75" class="cell" data-execution_count="5">
+<div id="b383f952" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -572,7 +572,7 @@ x_4 &amp;= x_3 - \frac{f'(x_3)}{f''(x_3)} = x_3 - \frac{1.17 \times 10^{-9}}{1.6
 </section>
 <section id="example-rosenbrock-function" class="slide level2">
 <h2>Example: Rosenbrock Function</h2>
-<div id="1dcbd75c" class="cell" data-execution_count="6">
+<div id="8c447b0a" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -617,10 +617,18 @@ x_{k + 1} - x^{\star} &amp; = x_{k} - \nabla^{2}f_{k}^{- 1}\nabla f_{k} - x^{\st
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo stretchy="false" form="postfix">∥</mo><mo>≤</mo><mover><mi>L</mi><mo accent="false">∼</mo></mover><mo stretchy="false" form="postfix">∥</mo><msub><mi>x</mi><mi>k</mi></msub><mo>−</mo><msup><mi>x</mi><mo>⋆</mo></msup><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\| x_{k + 1} - x^{\star}\| \leq \overset{\sim}{L}\| x_{k} - x^{\star}\|^{2}</annotation></semantics></math></p>
 <p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>x</mi><mn>0</mn></msub><mo>−</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo stretchy="false" form="postfix">∥</mo><mo>&lt;</mo><mo>min</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo>,</mo><mfrac><mn>1</mn><mover><mi>L</mi><mo accent="true">̃</mo></mover></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\|x_0 - x^\star\| &lt; \min\left(r, \frac{1}{ \tilde{L}} \right)</annotation></semantics></math>, then we get quadratic convergence.</p>
 </section>
+<section id="scan-matching" class="slide level2">
+<h2>Scan Matching</h2>
+
+<img data-src="contents/assets/scanmatch.png" class="r-stretch quarto-figure-center"><p class="caption">Laser scan taken at two different positions can be aligned to estimate robot motion</p></section>
+<section id="inverse-kinematics" class="slide level2">
+<h2>Inverse Kinematics</h2>
+
+<img data-src="contents/assets/fwdinvik.jpg" class="r-stretch quarto-figure-center"><p class="caption">Given target end effector pose, the associated target joint angles can be computed using optimization</p></section>
 <section id="newtons-revenge" class="slide level2">
 <h2>Newton’s Revenge</h2>
 <div class="centered-content">
-<div id="19b40dbb" class="cell" data-execution_count="7">
+<div id="f39670fd" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
