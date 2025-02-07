@@ -145,21 +145,179 @@
 <p><strong>Instructor</strong>: Hasan A. Poonawala<br> <br> Mechanical and Aerospace Engineering <br> University of Kentucky, Lexington, KY, USA</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p><strong>Topics</strong>: <br> Wolfe Conditions <br> Backtracking Line Search <br> Convergence properties <br></p>
+<p><strong>Topics</strong>: <br> Scan Matching<br> Inverse Kinematics <br> Machine Learning<br></p>
 </div>
 </div>
 </div>
 </section>
-<section id="scan-matching" class="slide level2">
+<section>
+<section id="scan-matching" class="title-slide slide level1 center">
+<h1>Scan Matching</h1>
+
+</section>
+<section id="scan-matching-1" class="slide level2">
 <h2>Scan Matching</h2>
 
 <img data-src="contents/assets/scanmatch.png" class="r-stretch quarto-figure-center"><p class="caption">Laser scan taken at two different positions can be aligned to estimate robot motion</p></section>
-<section id="inverse-kinematics" class="slide level2">
-<h2>Inverse Kinematics</h2>
+<section id="scan-matching-2" class="slide level2">
+<h2>Scan Matching</h2>
 
-<img data-src="contents/assets/fwdinvik.jpg" class="r-stretch quarto-figure-center"><p class="caption">Given target end effector pose, the associated target joint angles can be computed using optimization</p></section>
-<section id="example-2-parametric-estimation-nonconvex" class="slide level2 smaller">
-<h2><span style="font-size:95%"> Example 2 – Parametric Estimation (Nonconvex) </span></h2>
+<img data-src="contents/assets/fig_range_scan.png" style="width:200.0%" class="r-stretch"></section>
+<section id="scan-matching-observe-same-points" class="slide level2">
+<h2>Scan Matching: Observe Same Points</h2>
+
+<img data-src="contents/assets/fig_range_scan_2.png" style="width:200.0%" class="r-stretch"></section>
+<section id="scan-matching-observe-same-points-1" class="slide level2">
+<h2>Scan Matching: Observe Same Points</h2>
+<ul>
+<li>Scan 1: <span style="color:red"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbf x_i = \{x_i,y_i\}</annotation></semantics></math></span><br>
+</li>
+<li>Scan 2: <span style="color:blue"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>y</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbf x_j = \{x_j,y_j\}</annotation></semantics></math></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>↔</mo><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math> <span style="color:red"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>,</mo><msub><mi>y</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{x_{i(j)},y_{i(j)}\}</annotation></semantics></math></span></li>
+<li>Perfect association:<br>
+We can map a point in second scan to a unique point in first scan: <span style="color:blue"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mi>j</mi></msub><mo>,</mo><msub><mi>y</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{x_j,y_j\}</annotation></semantics></math></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>↔</mo><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math> <span style="color:red"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo>,</mo><msub><mi>y</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{x_{i(j)},y_{i(j)}\}</annotation></semantics></math></span></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>min</mo><mrow><mi>Δ</mi><mi>x</mi><mo>,</mo><mi>Δ</mi><mi>y</mi><mo>,</mo><mi>θ</mi></mrow></msub><msub><mo>∑</mo><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\min_{\Delta x, \Delta y, \theta} \sum_{j} \|</annotation></semantics></math><span style="color:blue"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathbf  x_j</annotation></semantics></math></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>T</mi><mrow><mi>Δ</mi><mi>x</mi><mo>,</mo><mi>Δ</mi><mi>y</mi><mo>,</mo><mi>θ</mi></mrow></msub><mo stretchy="false" form="prefix">(</mo></mrow><annotation encoding="application/x-tex">- T_{\Delta x, \Delta y, \theta}(</annotation></semantics></math> <span style="color:red"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><annotation encoding="application/x-tex">\mathbf x_{i(j)}</annotation></semantics></math></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">)\|^2</annotation></semantics></math>, where <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>Δ</mi><mi>x</mi><mo>,</mo><mi>Δ</mi><mi>y</mi><mo>,</mo><mi>θ</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>cos</mo><mi>θ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mo>sin</mo><mi>θ</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>sin</mo><mi>θ</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>cos</mo><mi>θ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mi>𝐱</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>y</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">T_{\Delta x, \Delta y, \theta}(\mathbf x) = \begin{bmatrix}\cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta\end{bmatrix} \mathbf x + \begin{bmatrix} \Delta x \\ \Delta y\end{bmatrix}</annotation></semantics></math></li>
+</ul>
+</section>
+<section id="scan-matching-observe-same-points-2" class="slide level2">
+<h2>Scan Matching: Observe Same Points</h2>
+
+<img data-src="contents/assets/fig_range_scan_3.png" style="width:200.0%" class="r-stretch"></section>
+<section id="scan-matching-different-points" class="slide level2">
+<h2>Scan Matching: Different Points</h2>
+
+<img data-src="contents/assets/fig_range_scan.png" style="width:200.0%" class="r-stretch"></section></section>
+<section>
+<section id="inverse-kinematics" class="title-slide slide level1 center">
+<h1>Inverse Kinematics</h1>
+
+</section>
+<section id="forward-inverse-kinematics" class="slide level2">
+<h2>Forward &amp; Inverse Kinematics</h2>
+
+<img data-src="contents/assets/fwdinvik.jpg" class="r-stretch quarto-figure-center"><p class="caption">Given joint angles <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐪</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>q</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbf q = \{q_i\}</annotation></semantics></math> we can predict the end effector pose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf x = (x,y,\theta)</annotation></semantics></math></p></section>
+<section id="forward-inverse-kinematics-1" class="slide level2">
+<h2>Forward &amp; Inverse Kinematics</h2>
+<ul>
+<li>The Forward Kinematics problem <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf x = f(\mathbf q)</annotation></semantics></math> combines known closed-form expressions for individual homogenous transformations</li>
+<li>Computing the inverse <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐪</mi><mo>=</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf q = f^{-1}(\mathbf x)</annotation></semantics></math>, however, is not as easy</li>
+<li>The inverse kinematics problem is often not even unique, which has algorithmic implications</li>
+</ul>
+</section>
+<section id="ik-approaches" class="slide level2">
+<h2>IK Approaches</h2>
+<p>Since we know how to build <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\mathbf q)</annotation></semantics></math>, we arrive at two approaches to inverse kinematics</p>
+<ul>
+<li>Analytic approaches: Build the closed-form expression <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\mathbf q)</annotation></semantics></math> and define a closed-form inverse <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f^{-1}(\mathbf q)</annotation></semantics></math></li>
+<li>Numerical approaches: Numerically search for values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐪</mi><annotation encoding="application/x-tex">\mathbf q</annotation></semantics></math> so that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐱</mi></mrow><annotation encoding="application/x-tex">f(\mathbf q) = \mathbf x</annotation></semantics></math>, where the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is either closed-form or numerical</li>
+</ul>
+</section>
+<section id="numerical-ik-approach" class="slide level2">
+<h2>Numerical IK Approach</h2>
+<ul>
+<li>solve optimization: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mi>𝐪</mi></munder><mspace width="1.0em"></mspace><msubsup><mrow><mo stretchy="true" form="prefix">‖</mo><mi>𝐱</mi><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">‖</mo></mrow><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\min_{\mathbf q}\quad \lVert \mathbf x - f(\mathbf q) \rVert_2^2</annotation></semantics></math></li>
+<li>We can add constraints that make the solution unique, or other benefits</li>
+</ul>
+</section>
+<section id="example-planar-elbow-manipulator" class="slide level2">
+<h2>Example: Planar Elbow Manipulator</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="contents/assets/fig_planar_elbow.png" style="width:100.0%"></p>
+</div><div class="column" style="width:40%;">
+<p><span style="color:red">Frame <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{2\}</annotation></semantics></math></span> has pose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y,\theta)</annotation></semantics></math> given by <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>x</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>L</mi><mn>1</mn></msub><mo>cos</mo><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><msub><mi>L</mi><mrow><mi>c</mi><mn>2</mn></mrow></msub><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>y</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>L</mi><mn>1</mn></msub><mo>sin</mo><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><msub><mi>L</mi><mrow><mi>c</mi><mn>2</mn></mrow></msub><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>θ</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>q</mi><mn>1</mn></msub><mo>+</mo><msub><mi>q</mi><mn>2</mn></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> or</mtext></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>𝐱</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐪</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+x &amp;= L_1 \cos q_1 + L_{c2} \cos (q_1+q_2) \\
+y &amp;= L_1 \sin q_1 + L_{c2} \sin (q_1+q_2) \\
+\theta &amp;= q_1 + q_2\\
+&amp;\text{ or}  \\
+ \mathbf x &amp;= f(\mathbf q)
+\end{align}</annotation></semantics></math></p>
+</div></div>
+</section></section>
+<section>
+<section id="logistic-regression" class="title-slide slide level1 center">
+<h1>Logistic Regression</h1>
+
+</section>
+<section id="logistic-regression-1" class="slide level2">
+<h2>Logistic Regression</h2>
+<ul>
+<li>We have vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐚</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{a}_i \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i = 1, 2, \ldots, n_1</annotation></semantics></math> in a class and vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐛</mi><mi>j</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{b}_j \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">j = 1, 2, \ldots, n_2</annotation></semantics></math> not in that class.</li>
+</ul>
+
+<img data-src="contents/assets/two_clusters.png" class="r-stretch quarto-figure-center"><p class="caption">Two clusters of points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_ {i}</annotation></semantics></math> (red) and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐛</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{b}_ {j}</annotation></semantics></math> (green) in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\mathbb R^2</annotation></semantics></math> (d=2)</p></section>
+<section id="approach" class="slide level2 smaller">
+<h2>Approach</h2>
+<ul>
+<li><p>We wish to classify the points into one of two clusters</p></li>
+<li><p>We convert classification into regression by requiring that for some function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐚</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> and </mtext><mspace width="0.333em"></mspace></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐚</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex"> f(\bm{a}_i) = 1 \text{ and } f(\bm{a}_i) = 0 </annotation></semantics></math></p></li>
+<li><p>One solution is to use the logistic function after linearly mapping inputs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> to a scalar: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">c</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msup><mi>e</mi><mi>s</mi></msup><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mi>s</mi></msup></mrow></mfrac><mo>;</mo><mspace width="1.0em"></mspace><mi>s</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>𝐱</mi><mi>T</mi></msup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex"> \mathrm{logistic}(s) = \frac{e^s}{1+e^{s}}; \quad s(\bm{x}) = \bm{x}^T \bm{w} + \beta </annotation></semantics></math></p></li>
+<li><p>New goal: find a vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐰</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{w} \in \mathbb{R}^d</annotation></semantics></math> and a number <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> such that</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>≈</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo><mspace width="1.0em"></mspace><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> and </mtext><mspace width="0.333em"></mspace></mrow><mspace width="1.0em"></mspace><mfrac><mrow><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>≈</mo><mn>0</mn><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>∀</mo><mi>j</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> \frac{\operatorname{exp}(\bm{a}_i^\top \bm{w} + \beta)}{1 +
+\operatorname{exp}(\bm{a}_i^\top \bm{w} + \beta)} \approx 1, \;\; \forall i,
+\quad \text{ and } \quad \frac{\operatorname{exp}(\bm{b}_j^\top \bm{w} +
+\beta)}{1 + \operatorname{exp}(\bm{b}_j^\top \bm{w} + \beta)} \approx 0, \;\;
+\forall j. </annotation></semantics></math></p>
+</section>
+<section id="approach-1" class="slide level2 smaller">
+<h2>Approach</h2>
+<ul>
+<li>This problem can be cast as an unconstrained optimization problem</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>maximize</mo><mrow><mi>𝐰</mi><mo>,</mo><mi>β</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∏</mo><mi>i</mi></munder><mfrac><mrow><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∏</mo><mi>j</mi></munder><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \operatorname{maximize}_{\bm{w}, \beta} 
+\left(\prod_i \frac{\operatorname{exp}(\bm{a}_i^\top \bm{w} + \beta)}{1 +
+\operatorname{exp}(\bm{a}_i^\top \bm{w} + \beta)}\right) \left(\prod_j
+\left(1 - \frac{\operatorname{exp}(\bm{b}_j^\top \bm{w} + \beta)}{1 +
+\operatorname{exp}(\bm{b}_j^\top \bm{w} + \beta)} \right) \right)
+</annotation></semantics></math></p>
+<p>which may equivalently be expressed using a log transformation as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>minimize</mo><mrow><mi>𝐰</mi><mo>,</mo><mi>β</mi></mrow></msub><munder><mo>∑</mo><mi>i</mi></munder><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>−</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><munder><mo>∑</mo><mi>j</mi></munder><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐛</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{minimize}_{\bm{w}, \beta} \sum_i \operatorname{log}\left(1 +
+\operatorname{exp}(-\bm{a}_i^\top \bm{w} - \beta) \right) + \sum_j
+\operatorname{log}\left(1 + \operatorname{exp}(\bm{b}_i^\top \bm{w} + \beta)
+\right).
+</annotation></semantics></math></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∏</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msup><mi>e</mi><mrow><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow></msup><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>∏</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>−</mo><mi>β</mi></mrow></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\prod \left( \frac{e^{\bm{a}_i^\top \bm{w} + \beta}}{1 + e^{\bm{a}_i^\top
+\bm{w} + \beta}} \right) = \prod \left( \frac{1}{1 + e^{-\bm{a}_i^\top
+\bm{w} - \beta}} \right)
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∏</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><msup><mi>e</mi><mrow><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow></msup><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>∏</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mrow></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\prod \left( 1 - \frac{e^{\bm{b}_j^\top \bm{w} + \beta}}{1 + e^{\bm{b}_j^\top
+\bm{w} + \beta}} \right) = \prod \left( \frac{1}{1 + e^{\bm{b}_j^\top
+\bm{w} + \beta}} \right)
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Is this an easy or a hard problem?</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="parametric-estimation-nonconvex" class="title-slide slide level1 center">
+<h1>Parametric Estimation (Nonconvex)</h1>
+
+</section>
+<section id="parametric-estimation-nonconvex-1" class="slide level2 smaller">
+<h2>Parametric Estimation (Nonconvex)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -177,14 +335,31 @@
 </ul>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>f</mi><mi>j</mi><mo>ℓ</mo></msubsup><mo>=</mo><mo>max</mo><mrow><mo stretchy="true" form="prefix">{</mo><mn>0</mn><mo>,</mo><munder><mo>∑</mo><mi>i</mi></munder><msubsup><mi>w</mi><mrow><mi>i</mi><mi>j</mi></mrow><mrow><mo>ℓ</mo><mo>−</mo><mn>1</mn></mrow></msubsup><msubsup><mi>f</mi><mi>i</mi><mrow><mo>ℓ</mo><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> f_j^\ell = \operatorname{max}\left\{0, \sum_i w_{ij}^{\ell-1} f_i^{\ell -1
 }\right\}, \quad \forall j. </annotation></semantics></math></p>
+</section>
+<section id="parametric-estimation-nonconvex-2" class="slide level2 smaller">
+<h2>Parametric Estimation (Nonconvex)</h2>
 <ul>
 <li>Similarly, for a sequence of variable value vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mi>k</mi></msup><annotation encoding="application/x-tex">\bm{x}^k</annotation></semantics></math> and observed function value vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{g}(\bm{x}^k)</annotation></semantics></math>,
 <ul>
 <li>We would like to find all weights <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>w</mi><mrow><mi>i</mi><mi>j</mi></mrow><mo>ℓ</mo></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\left(w_{ij}^\ell \right)</annotation></semantics></math>’s to minimize the total difference between <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐟</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{f}(\bm{x}^k)</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{g}(\bm{x}^k)</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mi>k</mi></munder><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐟</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex"> \sum_k \left| \bm{f}(\bm{x}^k) - \bm{g}(\bm{x}^k) \right|^2. </annotation></semantics></math></li>
 </ul></li>
+<li>Challenges:
+<ul>
+<li>Non-convexity</li>
+<li>Large amounts of data (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\nabla f</annotation></semantics></math> are expensive)</li>
+</ul></li>
+<li>Solutions:
+<ul>
+<li><a href="https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-22/issue-3/A-Stochastic-Approximation-Method/10.1214/aoms/1177729586.full" class="external" target="_blank">Stochastic gradient descent (SGD)</a></li>
+<li><a href="https://arxiv.org/abs/1412.6980" class="external" target="_blank">Adaptive Moment (ADAM)</a></li>
+</ul></li>
 </ul>
-
 </section>
+<section id="some-history-cnns" class="slide level2">
+<h2>Some History: CNNs</h2>
+<iframe data-external="1" src="https://www.youtube.com/embed/FwFduRA_L6Q" width="1600" height="900" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

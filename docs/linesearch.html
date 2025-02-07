@@ -216,7 +216,7 @@
 <p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_k = x^{\star} + y</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_{k+1} = x^{\star} -y</annotation></semantics></math></p>
 </div><div class="column" style="width:60%;">
 <div class="centered-content">
-<div id="98fc872b" class="cell" data-execution_count="1">
+<div id="a812bc3e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -271,7 +271,7 @@
 <h2>Example Wolfe Conditions</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><msub><mi>n</mi><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> min_{x \in \mathbb{R}} f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="ab3b19e8" class="cell" data-execution_count="2">
+<div id="1db822a3" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -299,7 +299,7 @@
 <h2>Backtracking Example</h2>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> f(x) = (x-3)^2 </annotation></semantics></math></p>
 <div class="centered-content">
-<div id="f08cf787" class="cell" data-execution_count="3">
+<div id="a33e3311" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -463,7 +463,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="bd405fdd" class="cell" data-execution_count="4">
+<div id="c358b1c2" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -484,7 +484,7 @@
 </div>
 </div>
 <div class="centered-content">
-<div id="b383f952" class="cell" data-execution_count="5">
+<div id="fcfb2ab7" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -572,7 +572,7 @@ x_4 &amp;= x_3 - \frac{f'(x_3)}{f''(x_3)} = x_3 - \frac{1.17 \times 10^{-9}}{1.6
 </section>
 <section id="example-rosenbrock-function" class="slide level2">
 <h2>Example: Rosenbrock Function</h2>
-<div id="8c447b0a" class="cell" data-execution_count="6">
+<div id="5e123634" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -628,7 +628,7 @@ x_{k + 1} - x^{\star} &amp; = x_{k} - \nabla^{2}f_{k}^{- 1}\nabla f_{k} - x^{\st
 <section id="newtons-revenge" class="slide level2">
 <h2>Newton’s Revenge</h2>
 <div class="centered-content">
-<div id="f39670fd" class="cell" data-execution_count="7">
+<div id="ca041de1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -691,6 +691,82 @@ f(\bm{x}_k), </annotation></semantics></math> where <math display="inline" xmlns
 <li><p>This factorization checks implicitly for positive definiteness.</p></li>
 <li><p>If the factorization fails (matrix not PD) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mu_k</annotation></semantics></math> is increased.</p></li>
 <li><p>Step direction is found by solving <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐆</mi><mi>T</mi></msup><mi>𝐆</mi><msub><mi>p</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bm{G}^T\bm{G} p_k = -\nabla f_k</annotation></semantics></math>.</p></li>
+</ul>
+</section>
+<section id="quasi-newton-method" class="slide level2">
+<h2>Quasi-Newton Method</h2>
+<p>Computes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>k</mi></msub><mo>≈</mo><msup><mi>∇</mi><mn>2</mn></msup><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">B_k \approx \nabla^2 f_k</annotation></semantics></math> as a solution to the secant equation: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><munder><munder><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo accent="true">⏟</mo></munder><msub><mi>s</mi><mi>k</mi></msub></munder><mo>=</mo><munder><munder><mrow><mi>∇</mi><msub><mi>f</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><mo accent="true">⏟</mo></munder><msub><mi>y</mi><mi>k</mi></msub></munder></mrow><annotation encoding="application/x-tex">B_{k+1} \underbrace{(x_{k+1}-x_{k})}_{s_k}  = \underbrace{\nabla f_{k+1}-\nabla f_k}_{y_k}</annotation></semantics></math></p>
+<p>Then solve <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><msubsup><mi>B</mi><mi>k</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msub><mi>s</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_{k} = - B_k^{-1} s_{k}</annotation></semantics></math></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>One dimension</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msup><mi>∂</mi><mn>2</mn></msup><mi>f</mi></mrow><mrow><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>≈</mo><mfrac><mrow><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mi>∂</mi><mrow><mi>∂</mi><mi>x</mi></mrow></mfrac><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial^2 f}{\partial x^2} \approx \frac{\frac{\partial}{\partial x} f(x_{k+1}) - \frac{\partial}{\partial x} f(x_k)}{x_{k+1} -x_{k}}</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</section>
+<section id="quasi-newton-method-1" class="slide level2 smaller">
+<h2>Quasi-Newton Method</h2>
+<p>Algorithms for updating <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>k</mi></msub><annotation encoding="application/x-tex">B_k</annotation></semantics></math>:</p>
+<ol type="1">
+<li><p>Broyden, Fletcher, Goldfarb, and Shanno (BFGS): <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>B</mi><mi>k</mi></msub><mo>−</mo><mfrac><mrow><msub><mi>B</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><msubsup><mi>s</mi><mi>k</mi><mi>T</mi></msubsup><msub><mi>B</mi><mi>k</mi></msub></mrow><mrow><msubsup><mi>s</mi><mi>k</mi><mi>T</mi></msubsup><msub><mi>B</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub></mrow></mfrac><mo>+</mo><mfrac><mrow><msub><mi>y</mi><mi>k</mi></msub><msubsup><mi>y</mi><mi>k</mi><mi>T</mi></msubsup></mrow><mrow><msubsup><mi>y</mi><mi>k</mi><mi>T</mi></msubsup><msub><mi>s</mi><mi>k</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">B_{k+1} = B_{k} - \frac{B_{k}s_{k}s_{k}^TB_{k}}{s_{k}^TB_{k}s_k} + \frac{y_k y_k^T}{y_k^T s_k}</annotation></semantics></math></p></li>
+<li><p>Symmetric Rank-One (SR1): <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>B</mi><mi>k</mi></msub><mo>+</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mi>k</mi></msub><mo>−</mo><msub><mi>B</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mi>k</mi></msub><mo>−</mo><msub><mi>B</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mrow><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mi>k</mi></msub><mo>−</mo><msub><mi>B</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><msub><mi>s</mi><mi>k</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">B_{k+1} = B_{k} + \frac{(y_{k}-B_{k} s_{k})(y_{k}-B_{k} s_{k})^T}{(y_{k}-B_{k} s_{k})^Ts_{k}}</annotation></semantics></math></p></li>
+</ol>
+<p>Algorithms for updating <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>k</mi></msub><mo>=</mo><msubsup><mi>B</mi><mi>k</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">H_k = B_k^{-1}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>I</mi><mo>−</mo><msub><mi>ρ</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><msubsup><mi>y</mi><mi>k</mi><mi>T</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>H</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>I</mi><mo>−</mo><msub><mi>ρ</mi><mi>k</mi></msub><msub><mi>y</mi><mi>k</mi></msub><msubsup><mi>s</mi><mi>k</mi><mi>T</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>ρ</mi><mi>k</mi></msub><msub><mi>s</mi><mi>k</mi></msub><msubsup><mi>s</mi><mi>k</mi><mi>T</mi></msubsup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>ρ</mi><mi>k</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><msubsup><mi>y</mi><mi>k</mi><mi>T</mi></msubsup><msub><mi>s</mi><mi>k</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex"> H_{k+1} = ( I - \rho_k s_k y_k^T) H_k ( I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T, \quad \rho_k = \frac{1}{y_k^T s_k} </annotation></semantics></math> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>k</mi></msub><mo>=</mo><mi>−</mi><msub><mi>H</mi><mi>k</mi></msub><mi>∇</mi><msub><mi>f</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_k = - H_k \nabla f_k</annotation></semantics></math></p>
+</section>
+<section id="quasi-newton-method-details" class="slide level2">
+<h2>Quasi-Newton Method: Details</h2>
+<ul>
+<li><p>Initialization: Start with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mi>k</mi></msub><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">H_k = I</annotation></semantics></math></p></li>
+<li><p>Step size: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha_k = 1</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> may interfere with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi>k</mi></msub><annotation encoding="application/x-tex">H_k</annotation></semantics></math> approximating the Hessian</p>
+<ul>
+<li>Backtracking isn’t enough to choose good <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math></li>
+<li>Choose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math> to satisfy strong Wolfe conditions</li>
+<li>Details are very technical (numerical computing challenges)</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-rosenbrock-function-1" class="slide level2">
+<h2>Example: Rosenbrock Function</h2>
+<div class="centered-content">
+<div id="fa7d9995" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="linesearch_files/figure-revealjs/cell-9-output-1.png" width="1278" height="524"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="summary" class="title-slide slide level1 center">
+<h1>Summary</h1>
+
+</section>
+<section id="summary-1" class="slide level2 smaller">
+<h2>Summary</h2>
+<p>You can now minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> (when unconstrained) iteratively. Find LM <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>⋆</mo></msup><annotation encoding="application/x-tex">x^\star</annotation></semantics></math> by</p>
+<ul>
+<li>Choosing direction <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>k</mi></msub><annotation encoding="application/x-tex">p_k</annotation></semantics></math>
+<ul>
+<li>Steepest descent with constant step size is easy and reliable but slow</li>
+<li>Newton method is fast but expensive and unreliable
+<ul>
+<li>needs modifications for reliable convergence</li>
+</ul></li>
+<li>Quasi-newton methods are a balance, but tricky</li>
+</ul></li>
+<li>Choosing step size <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math>
+<ul>
+<li>Back-tracking for SD and modified NM improves performance</li>
+<li>Strong Wolfe conditions for Quasi-newton methods</li>
+</ul></li>
 </ul>
 
 </section></section>
