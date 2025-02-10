@@ -310,6 +310,86 @@ y &amp;= L_1 \sin q_1 + L_{c2} \sin (q_1+q_2) \\
 </div>
 </div>
 </div>
+</section>
+<section id="example-logistic-regression" class="slide level2 smaller">
+<h2>Example: Logistic Regression</h2>
+<div class="centered-content">
+<div id="0fe5ed6c" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The optimal value is 12.37578346960808
+A solution x is
+[2.35589697 2.25825204]
+[-6.84717488]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="applications_files/figure-revealjs/cell-2-output-2.png" width="641" height="503"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-logistic-regression-1" class="slide level2 smaller">
+<h2>Example: Logistic Regression</h2>
+<div class="centered-content">
+<pre><code># Import packages.
+import cvxpy as cp
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams['text.usetex'] = True
+# Generate a random non-trivial linear program.
+m = 100
+n = 2
+np.random.seed(1)
+B = np.random.randn(m, n)
+A = np.random.randn(m, n)+np.array([3,3])
+
+plt.figure(figsize=(8, 6))
+plt.scatter(A[:,0],A[:,1])
+plt.scatter(B[:,0],B[:,1])
+# beta = A @ x0 + s0
+# c = -A.T @ lamb0
+
+# Define and solve the CVXPY problem.
+w = cp.Variable(n)
+beta = cp.Variable(1)
+prob = cp.Problem(cp.Minimize(cp.sum(cp.logistic( -A @ w- beta)) +cp.sum(cp.logistic( B @ w+ beta) )  ) )
+#                  [A @ x &lt;= beta])
+prob.solve()
+
+# Print result.
+print("\nThe optimal value is", prob.value)
+print("A solution x is")
+print(w.value)
+print(beta.value)
+
+
+
+
+x = np.linspace(-2, 5, 100)
+y = np.linspace(-2, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = (w.value[0]*X+w.value[1]*Y)+beta.value
+
+
+# Contour plot of the objective function
+contour = plt.contour(X, Y, Z, levels=20, cmap="viridis")
+plt.colorbar(contour, label="Objective Function Value")
+
+## Superimpose the line w^T x + beta = 0
+x = np.linspace(-2, 5, 100)
+y = -(w.value[0]/w.value[1])*x - beta.value/w.value[1]
+plt.plot(x,y,color="red",label="class boundary")
+plt.xlabel("$x_1$")
+plt.ylabel("$x_2$")
+plt.legend()
+
+plt.show()
+</code></pre>
+</div>
 </section></section>
 <section>
 <section id="parametric-estimation-nonconvex" class="title-slide slide level1 center">
@@ -358,6 +438,324 @@ y &amp;= L_1 \sin q_1 + L_{c2} \sin (q_1+q_2) \\
 <section id="some-history-cnns" class="slide level2">
 <h2>Some History: CNNs</h2>
 <iframe data-external="1" src="https://www.youtube.com/embed/FwFduRA_L6Q" width="1600" height="900" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section></section>
+<section>
+<section id="sequential-decision-making" class="title-slide slide level1 center">
+<h1>Sequential Decision Making</h1>
+
+</section>
+<section id="mdp-slides" class="slide level2">
+<h2>MDP Slides</h2>
+<p><a href="mdp.pdf">MDP</a></p>
+</section>
+<section id="finite-markov-decision-processes" class="slide level2 smaller">
+<h2>Finite Markov Decision Processes</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>A <em>finite</em> MDP, is described by the tuple <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝒮</mi><mo>,</mo><mi>𝒜</mi><mo>,</mo><mi>T</mi><mo>,</mo><mi>γ</mi><mo>,</mo><mi>ℛ</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\mathcal{S}, \mathcal{A}, T,\gamma,\mathcal{R})</annotation></semantics></math>:
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒮</mi><annotation encoding="application/x-tex">\mathcal S</annotation></semantics></math>: A finite set of states</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math>: A finite set of actions that can be taken in each state</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>: A (probabilistic) transition map</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>: The discount factor</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℛ</mi><annotation encoding="application/x-tex">\mathcal R</annotation></semantics></math>: the reward function</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>The agent and environment interact at each of a sequence of discrete time steps, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">t = 0, 1, 2, \ldots</annotation></semantics></math>.
+<ul>
+<li>At each time step <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, the agent receives some respresentation of the environment’s <em>state</em>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒮</mi></mrow><annotation encoding="application/x-tex">S_t \in \mathcal{S}</annotation></semantics></math>, and on that basis selects an action <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A_t \in \mathcal{A}(s)</annotation></semantics></math>.</li>
+<li>One time step later, in part as a consequence of its actions, the agent receives a numerical reward, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>ℛ</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">R_{t+1} \in \mathcal{R} \in \mathbb{R}</annotation></semantics></math> and finds itself in a new state, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">S_{t+1}</annotation></semantics></math>.</li>
+</ul></li>
+<li>The MDP and agent together give rise to a trajectory that begins like this: <span id="eq-traj"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>,</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>R</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_0, A_0, S_1, R_1, A_1, S_2, R_2, A_2, R_3, \ldots  \qquad(1)</annotation></semantics></math></span></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/agent_environment.png" width="95%" img="">
+</center>
+</div></div>
+</section>
+<section id="transition-model" class="slide level2">
+<h2>Transition Model</h2>
+<ul>
+<li>For finite MDPs, the random variables <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>t</mi></msub><annotation encoding="application/x-tex">R_t</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>t</mi></msub><annotation encoding="application/x-tex">S_t</annotation></semantics></math> have well defined discrete probability distributions dependent on the preceding state and action.</li>
+</ul>
+<p><span id="eq-dyn"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mi>ℙ</mi><mo stretchy="false" form="prefix">{</mo><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>s</mi><mi>′</mi><mo>,</mo><msub><mi>R</mi><mi>t</mi></msub><mo>=</mo><mi>r</mi><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>s</mi><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">}</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> T(s', r \mid s, a) \triangleq \mathbb{P}\{S_t = s', R_t = r \mid S_{t-1} = s, A_{t-1} = a\}  \qquad(2)</annotation></semantics></math></span></p>
+<ul>
+<li>This function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math> defines the <em>dynamics</em> of the MDP.
+<ul>
+<li>It specifies a probability distribution over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math> for each choice of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>, i.e.,</li>
+</ul></li>
+</ul>
+<p><span id="eq-pprob"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi><mo>∈</mo><mi>𝒮</mi></mrow></munder><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><mi>ℛ</mi></mrow></munder><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>s</mi><mo>∈</mo><mi>𝒮</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} T(s', r \mid s, a) = 1,
+\quad \forall s \in \mathcal{S}, \; a \in \mathcal{A}(s).  \qquad(3)</annotation></semantics></math></span></p>
+</section>
+<section id="linear-programming-methods" class="slide level2 smaller">
+<h2>Linear Programming Methods</h2>
+<p>We solve the MDP by finding a policy <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo>:</mo><mi>S</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\pi \colon S \to A</annotation></semantics></math> that maximizes the expected discounted sum of rewards <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">V(s)</annotation></semantics></math> obtained from any state <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">s \in S</annotation></semantics></math>.</p>
+<p>Through Dynamic Programming, we can solve for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">V(s)</annotation></semantics></math> using the following <span style="color:red">Linear Program</span>:</p>
+<p><span id="eq-mdp-lp"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><munder><mo>∑</mo><mi>s</mi></munder><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>γ</mi><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi></mrow></munder><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>,</mo><mi>s</mi><mi>′</mi><mo>∈</mo><mi>𝒮</mi><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; \sum_{s} V(s) \\
+\text{subject to} &amp; V(s) \geq r(s,a) + \gamma \sum_{s'} T(s'|s,a) V(s'), \quad
+s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
+\end{align}
+ \qquad(4)</annotation></semantics></math></span></p>
+</section></section>
+<section>
+<section id="equality-constrained-optimization-examples" class="title-slide slide level1 center">
+<h1>Equality Constrained Optimization Examples</h1>
+
+</section>
+<section id="example-1-geometric-prog.-max-volume" class="slide level2 smaller">
+<h2>Example 1 – Geometric Prog.: Max Volume</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>We seek to construct a cardboard box of maximum volume, given a fixed area of the cardboard.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mi>y</mi><mi>z</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mi>y</mi><mo>+</mo><mi>y</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>c</mi><mo>&gt;</mo><mn>0</mn><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">area</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize} &amp; xyz \\
+\text{subject to} &amp; (xy + yz + xz) = \frac{c}{2}, \quad c &gt; 0 \,(\text{area}).
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>First-Order Necessary Conditions</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>y</mi><mi>z</mi><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>x</mi><mi>z</mi><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>x</mi><mi>y</mi><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+yz - \lambda (y+z) &amp;= 0, \\
+xz - \lambda (x+z) &amp;= 0, \\
+xy - \lambda (x+y) &amp;= 0.
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Since no variables can be zero, we have <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi><mo>=</mo><mi>z</mi><mo>=</mo><msqrt><mfrac><mi>c</mi><mn>6</mn></mfrac></msqrt><mspace width="1.0em"></mspace><mtext mathvariant="normal">and</mtext><mspace width="1.0em"></mspace><mi>λ</mi><mo>=</mo><mfrac><msqrt><mrow><mn>6</mn><mi>c</mi></mrow></msqrt><mn>12</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">x = y = z = \sqrt{\frac{c}{6}} \quad \text{and} \quad \lambda =
+\frac{\sqrt{6c}}{12}. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Summing the FONC gives <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mi>y</mi><mo>+</mo><mi>y</mi><mi>z</mi><mo>+</mo><mi>x</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>2</mn><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(xy + yz + xz) - 2\lambda(x+y+z) = 0</annotation></semantics></math>.</li>
+<li>Using the constraint with this implies <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>c</mi><mn>2</mn></mfrac><mo>−</mo><mn>2</mn><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> \frac{c}{2} - 2\lambda(x+y+z) = 0. </annotation></semantics></math>
+<ul>
+<li>From this it is clear that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda \neq 0</annotation></semantics></math>.</li>
+</ul></li>
+<li>Next, we see that none of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math> are zero.
+<ul>
+<li>This is because if, say, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math> becomes zero (second equation), which implies <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math> from the first equation.</li>
+</ul></li>
+<li>Multiply the first by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>, second by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> and subtract to obtain <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>z</mi><mo>=</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> \lambda(x-y)z = 0. </annotation></semantics></math></li>
+<li>Similarly operate on second and third to obtain <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda (y-z)x = 0</annotation></semantics></math>.</li>
+</ul>
+</div></div>
+</section>
+<section id="example-2-hanging-chain" class="slide level2">
+<h2>Example 2 – Hanging Chain</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>A chain is suspended from two thin hooks that are <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>16</mn><annotation encoding="application/x-tex">16</annotation></semantics></math> ft. apart on a horizontal line. Each link is one foot in length (measured inside). We wish to formulate the problem to determine the equilibrium shape of the chain.</p>
+<center>
+<img src="./contents/assets/hangingchain.png" width="70%" img="">
+</center>
+<p>The solution can be found by minimizing the potential energy of the chain.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2-hanging-chain-1" class="slide level2 smaller">
+<h2>Example 2 – Hanging Chain</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Let link <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> span an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> distance of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math> and a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> distance of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>i</mi></msub><annotation encoding="application/x-tex">y_i</annotation></semantics></math>.</li>
+<li>Then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x_i^2 + y_i^2 = 1</annotation></semantics></math>.</li>
+<li>The potential energy of a link is its weight times its height.</li>
+<li>The total potential energy of the chain is the sum of those of each link.</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>With the top of the chain as reference and assuming the mass of each link is concentrated at its center</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>P</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><msub><mi>y</mi><mn>1</mn></msub><mn>2</mn></mfrac><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mfrac><msub><mi>y</mi><mn>2</mn></msub><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mfrac><msub><mi>y</mi><mn>3</mn></msub><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>⋯</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>+</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mfrac><msub><mi>y</mi><mi>n</mi></msub><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>i</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>y</mi><mi>i</mi></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+P &amp;= \frac{y_1}{2} + (y_1 + \frac{y_2}{2}) + (y_1 + y_2 + \frac{y_3}{2}) +
+\cdots \\
+&amp;+ \, (y_1 + y_2 + \cdots + y_{n-1} + \frac{y_n}{2}) = \sum_{i=1}^n
+(n-i+\frac{1}{2})y_i.
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">n = 20</annotation></semantics></math> in our example.</p>
+</div>
+</div>
+</div>
+</div></div>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Constraints</strong>: The total <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> displacement is zero and the total <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> displacement is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>16</mn><annotation encoding="application/x-tex">16</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Formulation</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>i</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>y</mi><mi>i</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msqrt><mrow><mn>1</mn><mo>−</mo><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup></mrow></msqrt><mo>=</mo><mn>16</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; \sum_{i=1}^n (n-i + \frac{1}{2})y_i \\
+\text{subject to} &amp; \sum_{i=1}^n y_i = 0, \quad \sum_{i=1}^n \sqrt{1 - y_i^2} = 16.
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>First-Order Necessary Conditions</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>i</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>λ</mi><mo>+</mo><mfrac><mrow><mi>μ</mi><msub><mi>y</mi><mi>i</mi></msub></mrow><msqrt><mrow><mn>1</mn><mo>−</mo><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup></mrow></msqrt></mfrac><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mi>.</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+&amp;(n-i + \frac{1}{2}) - \lambda + \frac{\mu y_i}{\sqrt{1-y_i^2}} = 0, \;\; i = 1,
+2, \ldots, n. \\
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-2-hanging-chain-2" class="slide level2">
+<h2>Example 2 – Hanging Chain</h2>
+<ul>
+<li>FONC directly leads to</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mi>−</mi><mfrac><mrow><mi>n</mi><mo>−</mo><mi>i</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mi>λ</mi></mrow><msqrt><mrow><msup><mi>μ</mi><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mi>i</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+y_i = -\frac{n - i + \frac{1}{2} - \lambda}{\sqrt{\mu^2 + (n - i + \frac{1}{2} -
+\lambda)^2}}.
+</annotation></semantics></math></p>
+<ul>
+<li>The solution is determined once the Lagrange multiplier are known.
+<ul>
+<li>They must be selected so that the solution satisfies the two constraints.</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-3-compressed-sensing" class="slide level2">
+<h2>Example 3 – Compressed Sensing</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>We often want to find the sparsest solution to fit exact data measurements in regression.</li>
+<li>That is, we want to minimize the number of nonzero entries in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> that satisfies a system of linear equations <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐀</mi><mi>𝐱</mi></mrow><mo>=</mo><mi>𝐛</mi></mrow><annotation encoding="application/x-tex">\bm{Ax} = \bm{b}</annotation></semantics></math>.
+<ul>
+<li>This discrete cardinality function is not continuous so we approximate it by a continuous and mostly differentiable pseudo-norm function. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>p</mi></msup><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mi>p</mi></msup><mo>,</mo><mspace width="1.0em"></mspace><mn>0</mn><mo>&lt;</mo><mi>p</mi><mo>≤</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> \left(|\bm{x}|_p \right)^p = \sum_{j=1}^n |x_j|^p, \quad 0 &lt; p \leq 1. </annotation></semantics></math></li>
+<li>This becomes the L<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>1</mn></msub><annotation encoding="application/x-tex">_1</annotation></semantics></math> norm function when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p = 1</annotation></semantics></math>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="example-3-compressed-sensing-1" class="slide level2 smaller">
+<h2>Example 3 – Compressed Sensing</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>We want to solve the lienar equality constrained minimization problem.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mi>p</mi></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mrow><mi>𝐀</mi><mi>𝐱</mi></mrow><mo>−</mo><mi>𝐛</mi><mo>=</mo><mn>𝟎</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; \sum_{j=1}^n |x_j|^p \\
+\text{subject to} &amp; \bm{Ax} - \bm{b} = \bm{0}.
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li><p>The derivative of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mi>p</mi></msup><annotation encoding="application/x-tex">|x_j|^p</annotation></semantics></math>, when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_j \neq 0</annotation></semantics></math> is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>sign</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(|x_j|^{p-1}
+\operatorname{sign}(x_j))</annotation></semantics></math>.</p></li>
+<li><p>Let us remove those zero entries in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math>, then the remaining nonzero variables must still meet the FONC: for the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> column <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{a}_j</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> and some <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math></p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>sign</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><msub><mi>𝐚</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>∀</mo><msub><mi>x</mi><mi>j</mi></msub><mo>≠</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> p ( |x_j|^{p-1} \operatorname{sign}(x_j) ) - \bm{\lambda}^\top\bm{a}_j = 0,
+\;\; \forall x_j \neq 0. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Multiplying each equation by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math> from the right and summing them up, we have</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><munder><mo>∑</mo><mrow><mi>j</mi><mo>:</mo><msub><mi>x</mi><mi>j</mi></msub><mo>≠</mo><mn>0</mn></mrow></munder><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mi>p</mi></msup><mo>=</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mrow><mi>j</mi><mo>:</mo><msub><mi>x</mi><mi>j</mi></msub><mo>≠</mo><mn>0</mn></mrow></munder><msub><mi>𝐚</mi><mi>j</mi></msub><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mi>𝐛</mi><mo>≤</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> p \sum_{j: x_j \neq 0} |x_j|^p = \bm{\lambda}^\top \left(\sum_{j: x_j \neq 0}
+\bm{a}_j x_j \right) = \bm{\lambda}^\top\bm{b} \leq |\bm{\lambda}| |\bm{b}|. </annotation></semantics></math></p>
+<p>This means that the sum of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>p</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">p^{\text{th}}</annotation></semantics></math> power of absolute values of the nonzero entries is bounded above. For <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">p = \frac{1}{2}</annotation></semantics></math>, we have <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msqrt><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow></msqrt><mo>≤</mo><mn>2</mn><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">\sum
+\sqrt{|x_j|} \leq 2 |\bm{\lambda}| |\bm{b}|</annotation></semantics></math>. Moreover,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></msup><mo>sign</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><msup><mi>𝛌</mi><mi>⊤</mi></msup><msub><mi>𝐚</mi><mi>j</mi></msub><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mo>⇒</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mfrac><mn>1</mn><msqrt><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow></msqrt></mfrac><mo>≤</mo><mn>2</mn><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐚</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|x_j|^{-\frac{1}{2}} \operatorname{sign}(x_j) = 2\bm{\lambda}^\top \bm{a}_j,
+\;\; \Longrightarrow \;\; \frac{1}{\sqrt{|x_j|}} \leq 2 |\bm{\lambda}|
+|\bm{a}_j|.
+</annotation></semantics></math></p>
+<ul>
+<li>This establishes a lower bound on the absolute values of each nonzero entry of any possible local minimizer of the problem.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
 
 </section></section>
     </div>
