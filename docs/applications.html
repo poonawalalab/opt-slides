@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="applications_files/libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="applications_files/libs/revealjs/dist/theme/quarto-0ff6e4cdb96306cb119adac6e196fbc9.css">
   <link rel="stylesheet" href="styles.css">
   <link href="applications_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="applications_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -314,7 +314,7 @@ y &amp;= L_1 \sin q_1 + L_{c2} \sin (q_1+q_2) \\
 <section id="example-logistic-regression" class="slide level2 smaller">
 <h2>Example: Logistic Regression</h2>
 <div class="centered-content">
-<div id="0fe5ed6c" class="cell" data-execution_count="1">
+<div id="6537f034" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The optimal value is 12.37578346960808
@@ -751,6 +751,303 @@ y_i = -\frac{n - i + \frac{1}{2} - \lambda}{\sqrt{\mu^2 + (n - i + \frac{1}{2} -
 </annotation></semantics></math></p>
 <ul>
 <li>This establishes a lower bound on the absolute values of each nonzero entry of any possible local minimizer of the problem.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="examples-of-linear-programming-problems" class="title-slide slide level1 center">
+<h1>Examples of Linear Programming Problems</h1>
+
+</section>
+<section id="example-1-the-diet-problem" class="slide level2 smaller">
+<h2>Example 1 – The Diet Problem</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Determine the most economical diet that satisfies the basic minimum nutritional requirements for good health</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>There are available <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> different foods.</li>
+<li>There are <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> basic nutritional ingredients,</li>
+<li>Each unit of food <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> contains <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math> units of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> nutrient.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> food sells at a price <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>j</mi></msub><annotation encoding="application/x-tex">c_j</annotation></semantics></math> per unit.</li>
+<li>Each individual must receive at least <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math> units of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> nutrient per day.</li>
+</ul>
+</div></div>
+<div class="fragment" data-fragment-index="1">
+<p>If we denote by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math> the number of units of food <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> in the diet, the problem is to select <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math>’s to minimize the total cost <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>c</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex"> c_1x_1 + c_2x_2 + \cdots + c_nx_n </annotation></semantics></math></p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p>subject to the nutritional constraints <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><msub><mi>x</mi><mi>n</mi></msub><mo>≥</mo><msub><mi>b</mi><mi>i</mi></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi><mo>,</mo></mrow><annotation encoding="application/x-tex"> a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \geq b_i, \; i=1, \ldots, m, </annotation></semantics></math></p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p>and the nonnegative constraints <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>≥</mo><mn>0</mn><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>≥</mo><mn>0</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex"> x_1 \geq 0, x_2 \geq 0, \ldots, x_n \geq 0, </annotation></semantics></math> on the food quantities.</p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This problem can be converted to standard form by subtracting a nonnegative surplus variable from the left side of each of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> linear inequalities.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-2-the-resource-allocation-problem" class="slide level2 smaller">
+<h2>Example 2– The Resource-Allocation Problem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>A facility is capable of manufacturing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> different products.</li>
+<li>Each product can be produced at any level <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_j \geq 0</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=1, 2, \ldots, n</annotation></semantics></math>.</li>
+<li>Each unit of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> product needs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math> units of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> resource, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">i = 1, 2, \ldots, m</annotation></semantics></math>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Each product may require various amounts of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> different resources.</li>
+<li>Each unit of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> product can sell for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\pi_j</annotation></semantics></math> dollars.</li>
+<li>Each <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">i = 1, 2, \ldots, m</annotation></semantics></math> describe the available quantities of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> resources.</li>
+</ul>
+</div></div>
+<div class="fragment" data-fragment-index="1">
+<p>We wish to manufacture products at maximum revenue</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>π</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>π</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>π</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize} &amp; \pi_1x_1 + \pi_2x_2 + \cdots + \pi_nx_n
+\end{align}
+</annotation></semantics></math></p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p>subject to the resource constraints</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>a</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><msub><mi>x</mi><mi>n</mi></msub><mo>≤</mo><msub><mi>b</mi><mi>i</mi></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\text{subject to} &amp; a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \leq b_i, \; i=1,
+\ldots, m
+\end{align}
+</annotation></semantics></math></p>
+<p>and the nonnegativity consraints on all production variables.</p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li>The problem can also be interpreted as
+<ul>
+<li>fund <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> different activities, where</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\pi_j</annotation></semantics></math> is the full reward from the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> activity,</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math> is restricted to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mi>j</mi></msub><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq x_j \leq 1</annotation></semantics></math>, representing the funding level from <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0\%</annotation></semantics></math> to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">100\%</annotation></semantics></math>.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-3-the-transportation-problem" class="slide level2 smaller">
+<h2>Example 3 – The Transportation Problem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Quantities <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \ldots, a_m</annotation></semantics></math> of a certain product are to be shipped from <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> locations.</li>
+<li>Shipping a unit of product from origin <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> to destination <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math> costs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">c_{ij}</annotation></semantics></math>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>These products will be received in amounts of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">b_1, b_2, \ldots, b_n</annotation></semantics></math> at each of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> destinations.</li>
+<li>We want to determine the amounts <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">x_{ij}</annotation></semantics></math> to be shipped between each origin-destination pair <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">i = 1, 2, \ldots, m</annotation></semantics></math>; <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=1, 2, \ldots, n</annotation></semantics></math>.</li>
+</ul>
+</div></div>
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>11</mn></msub><annotation encoding="application/x-tex">x_{11}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>12</mn></msub><annotation encoding="application/x-tex">x_{12}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋯</mi><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mn>1</mn><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">x_{1n}</annotation></semantics></math></td>
+<td>|</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>1</mn></msub><annotation encoding="application/x-tex">a_1</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>21</mn></msub><annotation encoding="application/x-tex">x_{21}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>22</mn></msub><annotation encoding="application/x-tex">x_{22}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋯</mi><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mn>2</mn><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">x_{2n}</annotation></semantics></math></td>
+<td>|</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>2</mn></msub><annotation encoding="application/x-tex">a_2</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋮</mi><annotation encoding="application/x-tex">\vdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋮</mi><annotation encoding="application/x-tex">\vdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋮</mi><annotation encoding="application/x-tex">\vdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋮</mi><annotation encoding="application/x-tex">\vdots</annotation></semantics></math></td>
+<td>|</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋮</mi><annotation encoding="application/x-tex">\vdots</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>m</mi><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">x_{m1}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>m</mi><mn>2</mn></mrow></msub><annotation encoding="application/x-tex">x_{m2}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋯</mi><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">x_{mn}</annotation></semantics></math></td>
+<td>|</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>m</mi></msub><annotation encoding="application/x-tex">a_m</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>——</td>
+<td>——</td>
+<td>——</td>
+<td>——</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mn>1</mn></msub><annotation encoding="application/x-tex">b_{1}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mn>2</mn></msub><annotation encoding="application/x-tex">b_{2}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋯</mi><annotation encoding="application/x-tex">\cdots</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>n</mi></msub><annotation encoding="application/x-tex">b_{n}</annotation></semantics></math></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>The <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> row in this array defines the variables associated with the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> origin.</li>
+<li>The <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> column defines the variables associated with the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> destination.</li>
+<li><em>Problem</em>: find the nonnegative variables <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">x_{ij}</annotation></semantics></math> so that the sum across the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> row is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math>, the sum down the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> column is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>j</mi></msub><annotation encoding="application/x-tex">b_j</annotation></semantics></math>, and the weighted sum <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>c</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\sum_{j=1}^n\sum_{i=1}^m c_{ij}x_{ij}</annotation></semantics></math> is minimized.</li>
+</ul>
+</div>
+</section>
+<section id="example-4-the-maximal-flow-problem" class="slide level2 smaller">
+<h2>Example 4 – The Maximal Flow Problem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Maximal flow problem</strong></p>
+</div>
+<div class="callout-content">
+<p>Determine the maximal flow that can be established in such a network.</p>
+</div>
+</div>
+</div>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mn>1</mn><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mn>1</mn></mrow></msub><mo>−</mo><mi>f</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>i</mi><mo>≠</mo><mn>1</mn><mo>,</mo><mi>m</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>m</mi><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mi>m</mi></mrow></msub><mo>+</mo><mi>f</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>≤</mo><msub><mi>k</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize} &amp; f \\
+\text{subject to} &amp; \sum_{j=1}^n x_{1j} - \sum_{j=1}^n x_{j1} - f = 0, \\
+&amp; \sum_{j=1}^n x_{ij} - \sum_{j=1}^n x_{ji}  = 0, \quad i \neq 1, m, \\
+&amp; \sum_{j=1}^n x_{mj} - \sum_{j=1}^n x_{jm} + f = 0, \\
+&amp; 0 \leq x_{ij} \leq k_{ij}, \quad \forall i, j,
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{ij} = 0</annotation></semantics></math> for those no-arc pairs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>.</p>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/network.png" width="75%">
+</center>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Capacitated network in which two special nodes, called the <em>source</em> (node 1); and the <em>sink</em> (node <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>) are distinguished.</li>
+<li>All other nodes must satisfy the conservation requirement: net flow into these nodes must be zero.
+<ul>
+<li>the source may have a net outflow,</li>
+<li>the sink may have a net inflow.</li>
+</ul></li>
+<li>The outlow <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> of the source will equal the inflow of the sink.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-5-a-supply-chain-problem" class="slide level2 smaller">
+<h2>Example 5 – A Supply-Chain Problem</h2>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>A warehouse is buying and selling stock of a certain commodity in order to maximize profit over a certain length of time.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Warehouse has a fixed capacity <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>.</li>
+<li>The price, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>, of the commodity is known to fluctuate over a number of time periods, say months, indexed by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>.</li>
+<li>The warehouse is originally empty and is required to be empty at the end of the last period.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>There is a cost <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> per unit of holding stock for one period.</li>
+<li>In any period the same price holds for both purchase and sale.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>: level of stock in the warehouse at the beginning of period <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>i</mi></msub><annotation encoding="application/x-tex">u_i</annotation></semantics></math>: amount bought during this period, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>: amount sold during this period.</li>
+</ul>
+</div></div>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo>−</mo><msub><mi>u</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>r</mi><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><msub><mi>u</mi><mi>i</mi></msub><mo>−</mo><msub><mi>s</mi><mi>i</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>=</mo><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><msub><mi>u</mi><mi>n</mi></msub><mo>−</mo><msub><mi>s</mi><mi>n</mi></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><msub><mi>z</mi><mi>i</mi></msub><mo>=</mo><mi>C</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>i</mi><mo>=</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo><msub><mi>u</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo><msub><mi>s</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo><msub><mi>z</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize} &amp; \sum_{i=1}^n \left(p_i(s_i - u_i) - rx_i \right) \\
+\text{subject to} &amp; x_{i+1} = x_i + u_i - s_i, \quad i = 1, 2, \ldots, n-1, \\
+&amp; 0 = x_n + u_n - s_n, \\
+&amp; x_i + z_i = C, \quad i = 2, \ldots, n, \\
+&amp; x_1 = 0, x_i \geq 0, u_i \geq 0, s_i \geq 0, z_i \geq 0,
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>i</mi></msub><annotation encoding="application/x-tex">z_i</annotation></semantics></math> is a slack variable.</p>
+</section>
+<section id="example-6-linear-classifier-and-support-vector-machine" class="slide level2 smaller">
+<h2><span style="font-size: 78%">Example 6 – Linear Classifier and Support Vector Machine</span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>-dimensional data points are to be classified into two distinct classes.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>In general, we have vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐚</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{a}_i \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i=1, 2, \ldots,
+n_1</annotation></semantics></math> and vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐛</mi><mi>j</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{b}_j \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">j = 1, 2, \ldots, n_2</annotation></semantics></math>.</li>
+<li>We wish to find a hyperplane that separates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_i</annotation></semantics></math>’s from the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐛</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{b}_j</annotation></semantics></math>’s, i.e., find a <em>slope-vector</em> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">y \in \mathbb{R}^d</annotation></semantics></math> and an intercept <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> such that</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐲</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐲</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≤</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+  \bm{a}_i^\top \bm{y} + \beta &amp;\geq 1, \quad \forall i, \\
+  \bm{b}_j^\top \bm{y} + \beta &amp;\leq 1, \quad \forall j, \\
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>:</mo><msup><mi>𝐱</mi><mi>𝐲</mi></msup><mo>+</mo><mi>β</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}: \bm{x}^\bm{y} + \beta = 0\}</annotation></semantics></math> is the desired hyperplane.</p>
+<ul>
+<li>The separation is defined by the fixed margins <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>, which could be made soft or variable later.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/svm.png" width="70%">
+</center>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Two-dimensional data points may be grade averages in science and humanities for different students.</li>
+<li>We also know the academic major of each student, as being science or humanities, which serves as the classification.</li>
 </ul>
 </div>
 </div>
