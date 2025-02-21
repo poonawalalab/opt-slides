@@ -366,6 +366,21 @@ f(\bm{x}^\ast)\bm{d} = 0. </annotation></semantics></math></p>
 </div>
 </div>
 </section>
+<section id="constraint-qualification" class="slide level2">
+<h2>Constraint Qualification</h2>
+<p>The statements of various conditions often require that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>⋆</mo></msup><annotation encoding="application/x-tex">x^\star</annotation></semantics></math> be a regular point<sup>1</sup>.</p>
+<p>This requirement is known as a constraint qualification.</p>
+<p>To see why constraint qualifications are important, consider the problem</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mtext mathvariant="normal">minimize </mtext><mspace width="0.333em"></mspace></mrow></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>h</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>h</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msubsup><mi>x</mi><mn>1</mn><mn>3</mn></msubsup><mo>=</mo><mn>0</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\text{minimize } &amp; (x_1-1)^2 + (x_2-1)^2\\
+\text{subject to} &amp; h_1(x) =  x_2 = 0\\
+ &amp;h_2(x) =  x_2 -x_1^3 = 0
+\end{align}
+</annotation></semantics></math></p>
+<p>The only feasible point is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>⋆</mo></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x^\star = (0,0)</annotation></semantics></math>, so that is the (global) minimizer.</p>
+<p>However, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mi>−</mi><mn>2</mn><mspace width="1.0em"></mspace><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\nabla f(x^{\star}) = [-2 \quad -2]^T</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>h</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mspace width="1.0em"></mspace><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\nabla h_1(x^{\star}) = [0 \quad 1]^T</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>h</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>⋆</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mspace width="1.0em"></mspace><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">\nabla h_2(x^{\star}) = [0 \quad 1]^T</annotation></semantics></math>. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>⋆</mo></msup><annotation encoding="application/x-tex">x^\star</annotation></semantics></math> cannot satisfy the FONC!</p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>The gradients of the active constraints are linearly independent</p></li></ol></aside></section>
 <section id="sensitivity" class="slide level2 smaller">
 <h2>Sensitivity</h2>
 <ul>
@@ -819,8 +834,8 @@ x_2 + 4x_3 - \lambda x_3 &amp;= 0.
 4 \end{bmatrix}.
 </annotation></semantics></math> </span></p>
 </section>
-<section id="solution-using" class="slide level2">
-<h2>Solution Using</h2>
+<section id="solution-using-newtons-method" class="slide level2">
+<h2>Solution Using Newton’s Method</h2>
 We want to solve a system of equations in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
 \nabla_x f(x) - \lambda^T \nabla_x h(x) &amp;= 0\\
@@ -856,7 +871,7 @@ h(x) &amp;= 0
 <section id="solution-using-gauss-newton" class="slide level2">
 <h2>Solution Using Gauss-Newton</h2>
 <div class="centered-content">
-<div id="2ff274e7" class="cell" data-execution_count="1">
+<div id="594f4c3b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1276,6 +1291,7 @@ g_j(\bm{x}^\ast) \bm{d} = 0 \;\; \forall j \in J \right\},
 </div></div>
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
