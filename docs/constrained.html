@@ -692,54 +692,6 @@ x_1 &amp;= x_2 = -\frac{1}{\sqrt{2}}, \quad \lambda = -\sqrt{2}-1.
 <li>So which is minimum, which is maximum?</li>
 </ul>
 </section>
-<section id="solution-using-newtons-method" class="slide level2">
-<h2>Solution Using Newton’s Method</h2>
-We want to solve a system of equations in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>:
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-\nabla_x f(x) - \lambda^T \nabla_x h(x) &amp;= 0\\
-h(x) &amp;= 0
-\end{aligned}</annotation></semantics></math>
-<p>Generally: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo>+</mo><mi>Δ</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mo>→</mo><mi>∇</mi><mi>g</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mi>Δ</mi><mi>z</mi><mo>+</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(z_k+\Delta z)=0 \to \nabla g(z_k)^T \Delta z + g(z_k) = 0</annotation></semantics></math>. Solve for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\Delta z</annotation></semantics></math> given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>k</mi></msub><annotation encoding="application/x-tex">z_k</annotation></semantics></math>.</p>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow></msub><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mi>+</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><msub><mi>∇</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow></msub><mi>h</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-\nabla_(x,\lambda) \left( \nabla_x f(x) - \lambda^T \nabla_x h(x) \right)^T 
-\begin{bmatrix}
-\Delta x \\ \Delta \lambda
-\end{bmatrix}
- &amp;+ \left( \nabla_x f(x) - \lambda^T \nabla_x h(x) \right)&amp; &amp;= 0\\
--\nabla_(x,\lambda) h(x)^T
-\begin{bmatrix}
-\Delta x \\ \Delta \lambda
-\end{bmatrix}
- &amp;- h(x) &amp;&amp;= 0 \quad 
-\end{aligned}</annotation></semantics></math>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>∇</mi><mi>x</mi><mn>2</mn></msubsup><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><munder><munder><mrow><munderover><mo>∑</mo><mi>i</mi><mi>m</mi></munderover><msub><mi>λ</mi><mi>i</mi></msub><msubsup><mi>∇</mi><mi>x</mi><mn>2</mn></msubsup><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mo accent="true">⏟</mo></munder><mrow><mi>m</mi><mo>×</mo><msup><mi>m</mi><mn>2</mn></msup><mtext mathvariant="normal">. Drop in Gauss-Newton</mtext></mrow></munder></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-\begin{bmatrix}
- \nabla_x^2 f(x) - \underbrace{\sum_{i}^{m} \lambda_i \nabla_x^2 h(x)}_{m \times m^2\text{. Drop in Gauss-Newton}}  &amp;  -\nabla_x h(x) \\
--\nabla_x h(x)^T  &amp;  0
-\end{bmatrix} 
-\begin{bmatrix}
-\Delta x \\ \Delta \lambda
-\end{bmatrix}
-=
-\begin{bmatrix}
--\nabla_x f(x) + \lambda^T \nabla_x h(x) \\ h(x)
-\end{bmatrix}
-\end{aligned}</annotation></semantics></math>
-</section>
-<section id="solution-using-gauss-newton" class="slide level2">
-<h2>Solution Using Gauss-Newton</h2>
-<div class="centered-content">
-<div id="438233d3" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-2-output-1.png" width="1270" height="525"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="eigenvalues-in-the-tangent-subspace" class="slide level2 smaller">
 <h2>Eigenvalues in the Tangent Subspace</h2>
 <div class="columns">
@@ -1332,6 +1284,11 @@ g_j(\bm{x}^\ast) \bm{d} = 0 \;\; \forall j \in J \right\},
 </div>
 </div>
 </div></div>
+</section></section>
+<section>
+<section id="applications" class="title-slide slide level1 center">
+<h1>Applications</h1>
+
 </section>
 <section id="cantilever-design" class="slide level2">
 <h2>Cantilever Design</h2>
@@ -1341,47 +1298,264 @@ g_j(\bm{x}^\ast) \bm{d} = 0 \;\; \forall j \in J \right\},
 </section>
 <section id="cantilever-design-1" class="slide level2">
 <h2>Cantilever Design</h2>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mrow><mi>t</mi><mo>,</mo><mi>w</mi><mo>,</mo><mi>Q</mi><mo>,</mo><mi>I</mi></mrow></munder><mn>4</mn><mi>t</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo>−</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Bending stress</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>σ</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><mi>L</mi><mi>w</mi></mrow><mrow><mn>2</mn><mi>I</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Bending stress</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><mi>L</mi><mi>Q</mi></mrow><mrow><mn>2</mn><mi>I</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>Q</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><msup><mi>w</mi><mn>2</mn></msup><mi>t</mi><mo>−</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mi>w</mi><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>t</mi><mn>3</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>I</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>8</mn><mn>4</mn></mfrac><msup><mi>w</mi><mn>3</mn></msup><mi>t</mi><mo>+</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>w</mi><mn>3</mn></msup><mi>t</mi><mo>−</mo><mn>2</mn><msup><mi>w</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><msup><mi>t</mi><mn>4</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Deflection</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>q</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><msup><mi>L</mi><mn>3</mn></msup><mi>w</mi></mrow><mrow><mn>3</mn><mi>E</mi><mi>I</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Wall thickness ratio</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>t</mi><mo>−</mo><mfrac><mi>w</mi><mn>8</mn></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Dimension limits</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mn>3</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>15</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mn>60</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>300</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><munder><mo>min</mo><mrow><mi>t</mi><mo>,</mo><mi>w</mi><mo>,</mo><mi>Q</mi><mo>,</mo><mi>I</mi></mrow></munder><mn>4</mn><mi>t</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>w</mi><mo>−</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Shear stress</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>σ</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><mi>L</mi><mi>w</mi></mrow><mrow><mn>2</mn><mi>I</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Bending stress</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>τ</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><mi>L</mi><mi>Q</mi></mrow><mrow><mn>2</mn><mi>I</mi><mi>t</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>Q</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>3</mn><mn>4</mn></mfrac><msup><mi>w</mi><mn>2</mn></msup><mi>t</mi><mo>−</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mi>w</mi><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><msup><mi>t</mi><mn>3</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>I</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>8</mn><mn>4</mn></mfrac><mi>w</mi><msup><mi>t</mi><mn>3</mn></msup><mo>+</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>w</mi><mn>3</mn></msup><mi>t</mi><mo>−</mo><mn>2</mn><msup><mi>w</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><msup><mi>t</mi><mn>4</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Deflection</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>q</mi><mi>a</mi></msub><mo>−</mo><mfrac><mrow><mi>P</mi><msup><mi>L</mi><mn>3</mn></msup><mi>w</mi></mrow><mrow><mn>3</mn><mi>E</mi><mi>I</mi></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Wall thickness ratio</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mi>t</mi><mo>−</mo><mfrac><mi>w</mi><mn>8</mn></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">Dimension limits</mtext></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mn>3</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>15</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"></mtd><mtd columnalign="right" style="text-align: right"><mn>60</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>300</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
 &amp;&amp; \min_{t,w,Q,I} 4 t (w-t) &amp; \\
-\text{Bending stress} &amp;&amp;  \sigma_a - \frac{PLw}{2 I }   &amp;\geq 0\\
+\text{Shear stress} &amp;&amp;  \sigma_a - \frac{PLw}{2 I }   &amp;\geq 0\\
 \text{Bending stress} &amp;&amp;  \tau_a - \frac{PL Q}{2 I t}  &amp;\geq 0\\
  &amp;&amp; Q &amp;= \frac{3}{4} w^2 t - \frac{3}{2} w t^2 + t^3\\
- &amp;&amp; I &amp;= \frac{8}{4} w^3 t + \frac{2}{3} w^3 t - 2 w^2 t^2 - \frac{4}{3}t^4\\
+ &amp;&amp; I &amp;= \frac{8}{4} w t^3 + \frac{2}{3} w^3 t - 2 w^2 t^2 - \frac{4}{3}t^4\\
 \text{Deflection} &amp;&amp;  q_a  - \frac{PL^3w}{3 E I } &amp; \geq 0\\
 \text{Wall thickness ratio} &amp;&amp; t -\frac{w}{8} &amp;\geq 0\\
 \text{Dimension limits} &amp;&amp;  3 \leq t \leq 15 \\
                         &amp;&amp;  60 \leq t \leq 300 \\
 \end{align}</annotation></semantics></math></p>
 </section>
-<section id="sensitivity-3" class="slide level2 smaller">
-<h2>Sensitivity</h2>
+<section id="example-4-the-maximal-flow-problem" class="slide level2 smaller">
+<h2>Example 4 – The Maximal Flow Problem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Maximal flow problem</strong></p>
+</div>
+<div class="callout-content">
+<p>Determine the maximal flow that can be established in such a network.</p>
+</div>
+</div>
+</div>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mn>1</mn><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mn>1</mn></mrow></msub><mo>−</mo><mi>f</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>i</mi><mo>≠</mo><mn>1</mn><mo>,</mo><mi>m</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>m</mi><mi>j</mi></mrow></msub><mo>−</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mrow><mi>j</mi><mi>m</mi></mrow></msub><mo>+</mo><mi>f</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>≤</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>≤</mo><msub><mi>k</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize} &amp; f \\
+\text{subject to} &amp; \sum_{j=1}^n x_{1j} - \sum_{j=1}^n x_{j1} - f = 0, \\
+&amp; \sum_{j=1}^n x_{ij} - \sum_{j=1}^n x_{ji}  = 0, \quad i \neq 1, m, \\
+&amp; \sum_{j=1}^n x_{mj} - \sum_{j=1}^n x_{jm} + f = 0, \\
+&amp; 0 \leq x_{ij} \leq k_{ij}, \quad \forall i, j,
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{ij} = 0</annotation></semantics></math> for those no-arc pairs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>.</p>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/network.png" width="75%">
+</center>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Capacitated network in which two special nodes, called the <em>source</em> (node 1); and the <em>sink</em> (node <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>) are distinguished.</li>
+<li>All other nodes must satisfy the conservation requirement: net flow into these nodes must be zero.
+<ul>
+<li>the source may have a net outflow,</li>
+<li>the sink may have a net inflow.</li>
+</ul></li>
+<li>The outlow <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> of the source will equal the inflow of the sink.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-6-linear-classifier-and-support-vector-machine" class="slide level2 smaller">
+<h2><span style="font-size: 78%">Example 6 – Linear Classifier and Support Vector Machine</span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>-dimensional data points are to be classified into two distinct classes.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>In general, we have vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐚</mi><mi>i</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{a}_i \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">i=1, 2, \ldots,
+n_1</annotation></semantics></math> and vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐛</mi><mi>j</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">\bm{b}_j \in \mathbb{R}^d</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>n</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">j = 1, 2, \ldots, n_2</annotation></semantics></math>.</li>
+<li>We wish to find a hyperplane that separates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_i</annotation></semantics></math>’s from the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐛</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{b}_j</annotation></semantics></math>’s, i.e., find a <em>slope-vector</em> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">y \in \mathbb{R}^d</annotation></semantics></math> and an intercept <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> such that</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≤</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+  \bm{a}_i^\top \bm{w} + \beta &amp;\geq 1, \quad \forall i, \\
+  \bm{b}_j^\top \bm{w} + \beta &amp;\leq 1, \quad \forall j, \\
+\end{align}
+</annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>:</mo><msup><mi>𝐱</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}: \bm{x}^\top \bm{w} + \beta = 0\}</annotation></semantics></math> is the desired hyperplane.</p>
+<ul>
+<li>The separation is defined by the fixed margins <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>, which could be made soft or variable later.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/svm.png" width="70%">
+</center>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Sensitivity Theorem</strong></p>
+<p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
-<p>Consider the family of problems</p>
-<p><span id="eq-sensitivity-nlp"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐛</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>𝐜</mi><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>19</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<ul>
+<li>Two-dimensional data points may be grade averages in science and humanities for different students.</li>
+<li>We also know the academic major of each student, as being science or humanities, which serves as the classification.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-soft-margin-minimization-in-svm" class="slide level2 smaller">
+<h2>Example – Soft-Margin Minimization in SVM</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>In the original SVM example, the two data sets were separable, but in reality data may come in as inseparable.</li>
+<li>An objective function would need to be added to the model.</li>
+<li>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> represent the data matrix for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_i</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> represent the data for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐛</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{b}_j</annotation></semantics></math>.</li>
+<li>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>𝟏</mn><annotation encoding="application/x-tex">\bm{1}</annotation></semantics></math> denote the vector of all ones.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Optimization problem</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false" form="postfix">∥</mo><mi>𝐰</mi><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup><mo>+</mo><mi>γ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mn>𝟏</mn><mi>⊤</mi></msup><mi>𝐮</mi><mo>+</mo><msup><mn>𝟏</mn><mi>⊤</mi></msup><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐚</mi><mi>i</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mn>1</mn><mo>−</mo><msub><mi>u</mi><mi>i</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>i</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐛</mi><mi>j</mi><mi>⊤</mi></msubsup><mi>𝐰</mi><mo>+</mo><mi>β</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>≤</mo><mn>1</mn><mo>−</mo><msub><mi>v</mi><mi>i</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐮</mi><mo>≥</mo><mn>𝟎</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>𝐯</mi><mo>≥</mo><mn>𝟎</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
-\operatorname{minimize} &amp; f(\bm{x}) \\
-\text{subject to} &amp; \bm{h}(\bm{x}) = \bm{b}, \quad \bm{g}(\bm{x}) \geq \bm{c}.
+\operatorname{minimize} &amp; \frac{1}{2}\|\bm{w}\|^2 + \gamma (\bm{1}^\top\bm{u} +\bm{1}^\top \bm{v}) \\
+  \bm{a}_i^\top \bm{w} + \beta &amp;\geq 1 - u_i, \quad \forall i, \\
+  \bm{b}_j^\top \bm{w} + \beta &amp;\leq 1 - v_i, \quad \forall j, \\
+&amp; \bm{u} \geq \bm{0}, \; \bm{v} \geq \bm{0}.
 \end{align}
- \qquad(19)</annotation></semantics></math></span></p>
-<p>Suppose that for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐛</mi><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{b} = \bm{0}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐜</mi><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{c} = \bm{0}</annotation></semantics></math>, there is a local solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> that is a regular point and that together with the associated Lagrange multipliers, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo>≥</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{\lambda}, \bm{\mu} \geq \bm{0}</annotation></semantics></math>, satisfies the SOSC for a strict local minimum. Assume further that no active inequality constraints is degenerate.</p>
-<p>Then for every <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mrow><mi>m</mi><mo>+</mo><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(\bm{b}, \bm{c}) \in \mathbb{R}^{m+p}</annotation></semantics></math> in a region containing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo>,</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\bm{0}, \bm{0})</annotation></semantics></math>, there is a solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{b}, \bm{c})</annotation></semantics></math>, depending continuously on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\bm{b}, \bm{c})</annotation></semantics></math>, such that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo>,</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>𝐱</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{0}, \bm{0}) =
-\bm{x}^\ast</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{b}, \bm{c})</annotation></semantics></math> is a relative minimum of <a href="#/eq-sensitivity-nlp" class="quarto-xref">Equation&nbsp;19</a>. Furthermore</p>
-<p><span id="eq-sensitivity-grad-nlp"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>𝐛</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><msub><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">|</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo>,</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>𝐜</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐛</mi><mo>,</mo><mi>𝐜</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><msub><mo minsize="3.0" maxsize="3.0" stretchy="false" form="postfix">|</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo>,</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msup><mi>𝛍</mi><mi>⊤</mi></msup><mi>.</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>20</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+</annotation></semantics></math></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>:</mo><msup><mi>𝐱</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>+</mo><mi>β</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}: \bm{x}^\top \bm{w} + \beta = 0\}</annotation></semantics></math> is the desired hyperplane.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>i</mi></msub><annotation encoding="application/x-tex">u_i</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>j</mi></msub><annotation encoding="application/x-tex">v_j</annotation></semantics></math> represent possible error margins of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_i</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐛</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\bm{b}_j</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Lagrangian</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>ℓ</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐰</mi><mo>,</mo><mi>β</mi><mo>,</mo><mi>𝐮</mi><mo>,</mo><mi>𝐯</mi><mo>,</mo><msub><mi>𝛍</mi><mi>a</mi></msub><mo>,</mo><msub><mi>𝛍</mi><mi>b</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false" form="postfix">∥</mo><mi>𝐰</mi><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup><mo>+</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mn>𝟏</mn><mi>⊤</mi></msup><mi>𝐮</mi><mo>+</mo><msup><mn>𝟏</mn><mi>⊤</mi></msup><mi>𝐯</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mphantom><mn>234</mn></mphantom><mo>−</mo><msubsup><mi>𝛍</mi><mi>A</mi><mi>⊤</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐀</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>+</mo><mn>𝟏</mn><mi>β</mi><mo>+</mo><mi>𝐮</mi><mo>−</mo><mn>𝟏</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛍</mi><mi>B</mi><mi>⊤</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><msup><mi>𝐁</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>−</mo><mn>𝟏</mn><mi>β</mi><mo>−</mo><mi>𝐯</mi><mo>+</mo><mn>𝟏</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
-\nabla_\bm{b} f(\bm{x}(\bm{b}, \bm{c}))\Bigg\rvert_{(\bm{0}, \bm{0})} &amp;=
-\bm{\lambda}^\top, \\
-\nabla_\bm{c} f(\bm{x}(\bm{b}, \bm{c}))\Bigg\rvert_{(\bm{0}, \bm{0})} &amp;=
-\bm{\mu}^\top. \\
-\end{align} 
- \qquad(20)</annotation></semantics></math></span></p>
+&amp;\ell(\bm{w},\beta, \bm{u}, \bm{v}, \bm{\mu}_a, \bm{\mu}_b) =
+\frac{1}{2}\|\bm{w}\|^2 + \beta(\bm{1}^\top \bm{u} + \bm{1}^\top \bm{v}) \\
+&amp;\phantom{234} - \bm{\mu}_A^\top (\bm{A}^\top \bm{w} + \bm{1}\beta + \bm{u} -
+\bm{1}) - \bm{\mu}_B^\top (-\bm{B}^\top \bm{w} - \bm{1}\beta - \bm{v} +
+\bm{1}).
+\end{align}
+</annotation></semantics></math></p>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>First-Order Conditions</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>(MSC): <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mphantom><mn>231445</mn></mphantom><msub><mi>𝛍</mi><mi>A</mi></msub><mo>≥</mo><mn>𝟎</mn><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><msub><mi>𝛍</mi><mi>B</mi></msub><mo>≥</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\phantom{231445}\bm{\mu}_A \geq \bm{0} \;\; \bm{\mu}_B \geq \bm{0}</annotation></semantics></math>.</p></li>
+<li><p>(LDC): <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>𝐰</mi></msub><mo>ℓ</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐰</mi><mo>−</mo><msub><mrow><mi>𝐀</mi><mi>𝛍</mi></mrow><mi>A</mi></msub><mo>+</mo><msub><mrow><mi>𝐁</mi><mi>𝛍</mi></mrow><mi>B</mi></msub><mo>=</mo><mn>𝟎</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>β</mi></msub><mo>ℓ</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><msup><mn>𝟏</mn><mi>⊤</mi></msup><msub><mi>𝛍</mi><mi>A</mi></msub><mo>+</mo><msup><mn>𝟏</mn><mi>⊤</mi></msup><msub><mi>𝛍</mi><mi>B</mi></msub><mo>+</mo><mi>𝐮</mi><mo>+</mo><mi>𝐯</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>𝐮</mi></msub><mo>ℓ</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>β</mi><mn>𝟏</mn><mo>−</mo><msub><mi>𝛍</mi><mi>A</mi></msub><mo>≥</mo><mn>𝟎</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>𝐯</mi></msub><mo>ℓ</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>⋅</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>β</mi><mn>𝟏</mn><mo>−</mo><msub><mi>𝛍</mi><mi>B</mi></msub><mo>≥</mo><mn>𝟎</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\nabla_\bm{w}\ell(\cdot) :&amp; \bm{w} - \bm{A\mu}_A + \bm{B\mu}_B = \bm{0}, \\
+\nabla_{\beta}\ell(\cdot) :&amp; -\bm{1}^\top \bm{\mu}_A + \bm{1}^\top \bm{\mu}_B +\bm{u} + \bm{v}= 0,
+\\
+\nabla_\bm{u} \ell(\cdot) :&amp; \beta \bm{1} - \bm{\mu}_A \geq \bm{0}, \\
+\nabla_\bm{v} \ell(\cdot) :&amp; \beta \bm{1} - \bm{\mu}_B \geq \bm{0}.
+\end{align}
+</annotation></semantics></math></p></li>
+<li><p>(CSC): <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝛍</mi><mi>A</mi><mi>⊤</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐀</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>+</mo><mn>𝟏</mn><mi>β</mi><mo>+</mo><mi>𝐮</mi><mo>−</mo><mn>𝟏</mn><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝛍</mi><mi>B</mi><mi>⊤</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><msup><mi>𝐁</mi><mi>⊤</mi></msup><mi>𝐰</mi><mo>−</mo><mn>𝟏</mn><mi>β</mi><mo>−</mo><mi>𝐯</mi><mo>+</mo><mn>𝟏</mn><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msup><mi>𝐮</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>β</mi><mn>𝟏</mn><mo>−</mo><msub><mi>𝛍</mi><mi>A</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msup><mi>𝐯</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>β</mi><mn>𝟏</mn><mo>−</mo><msub><mi>𝛍</mi><mi>B</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\bm{\mu}_A^\top (\bm{A}^\top \bm{w} + \bm{1}\beta + \bm{u} - \bm{1}) &amp;= 0, \\ 
+\bm{\mu}_B^\top (-\bm{B}^\top \bm{w} - \bm{1}\beta - \bm{v} + \bm{1}) &amp;= 0, \\ 
+\bm{u}^\top(\beta \bm{1} - \bm{\mu}_A) &amp;= 0, \\
+\bm{v}^\top(\beta \bm{1} - \bm{\mu}_B) &amp;= 0.
+\end{align}
+</annotation></semantics></math></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="algorithms" class="title-slide slide level1 center">
+<h1>Algorithms</h1>
+
+</section>
+<section id="example-9" class="slide level2 smaller">
+<h2>Example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Consider the problem</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi>−</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>x</mi><mn>2</mn><mn>2</mn></msubsup><mo>−</mo><mn>1</mn><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize } &amp; -(x_1 - 1)^2 + -(x_2 - 1)^2 \\
+\text{subject to} &amp; x_1^2 + x_2^2 - 1 = 0.
+\end{align}
+</annotation></semantics></math></p>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="./contents/assets/stationary.png" width="50%" img="">
+</center>
+</div></div>
+</section>
+<section id="solution-using-gauss-newton" class="slide level2">
+<h2>Solution Using (Gauss) Newton</h2>
+<div class="centered-content">
+<div id="a9b49fb9" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="constrained_files/figure-revealjs/cell-2-output-1.png" width="1270" height="525"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-using-newtons-method" class="slide level2">
+<h2>Solution Using Newton’s Method</h2>
+We want to solve a system of equations in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\nabla_x f(x) - \lambda^T \nabla_x h(x) &amp;= 0\\
+h(x) &amp;= 0
+\end{aligned}</annotation></semantics></math>
+<p>Generally: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo>+</mo><mi>Δ</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mo>→</mo><mi>∇</mi><mi>g</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mi>Δ</mi><mi>z</mi><mo>+</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(z_k+\Delta z)=0 \to \nabla g(z_k)^T \Delta z + g(z_k) = 0</annotation></semantics></math>. Solve for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\Delta z</annotation></semantics></math> given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>k</mi></msub><annotation encoding="application/x-tex">z_k</annotation></semantics></math>.</p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>∇</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow></msub><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mi>+</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><msub><mi>∇</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow></msub><mi>h</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\nabla_(x,\lambda) \left( \nabla_x f(x) - \lambda^T \nabla_x h(x) \right)^T 
+\begin{bmatrix}
+\Delta x \\ \Delta \lambda
+\end{bmatrix}
+ &amp;+ \left( \nabla_x f(x) - \lambda^T \nabla_x h(x) \right)&amp; &amp;= 0\\
+-\nabla_(x,\lambda) h(x)^T
+\begin{bmatrix}
+\Delta x \\ \Delta \lambda
+\end{bmatrix}
+ &amp;- h(x) &amp;&amp;= 0 \quad 
+\end{aligned}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msubsup><mi>∇</mi><mi>x</mi><mn>2</mn></msubsup><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><munder><munder><mrow><munderover><mo>∑</mo><mi>i</mi><mi>m</mi></munderover><msub><mi>λ</mi><mi>i</mi></msub><msubsup><mi>∇</mi><mi>x</mi><mn>2</mn></msubsup><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mo accent="true">⏟</mo></munder><mrow><mi>m</mi><mo>×</mo><msup><mi>m</mi><mn>2</mn></msup><mtext mathvariant="normal">. Drop in Gauss-Newton</mtext></mrow></munder></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>x</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Δ</mi><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>∇</mi><mi>x</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msup><mi>λ</mi><mi>T</mi></msup><msub><mi>∇</mi><mi>x</mi></msub><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\begin{bmatrix}
+ \nabla_x^2 f(x) - \underbrace{\sum_{i}^{m} \lambda_i \nabla_x^2 h(x)}_{m \times m^2\text{. Drop in Gauss-Newton}}  &amp;  -\nabla_x h(x) \\
+-\nabla_x h(x)^T  &amp;  0
+\end{bmatrix} 
+\begin{bmatrix}
+\Delta x \\ \Delta \lambda
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\nabla_x f(x) + \lambda^T \nabla_x h(x) \\ h(x)
+\end{bmatrix}
+\end{aligned}</annotation></semantics></math>
 
 </section></section>
 
