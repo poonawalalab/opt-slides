@@ -1605,15 +1605,15 @@ n_1</annotation></semantics></math> and vector <math display="inline" xmlns="htt
 <section id="solution-using-gauss-newton" class="slide level2">
 <h2>Solution Using (Gauss) Newton</h2>
 <div class="centered-content">
-<div id="243eaaf7" class="cell" data-execution_count="1">
+<div id="882d7640" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0002338886260986328 sec elapsed for NM
-0.0003077983856201172 sec elapsed for GNM</code></pre>
+<pre><code>0.21600723266601562 msec elapsed for NM
+0.377655029296875 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-2-output-2.png" width="1270" height="525"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-2-output-2.png" width="1263" height="521"></p>
 </figure>
 </div>
 </div>
@@ -1672,15 +1672,15 @@ h(x) &amp;= 0
 <section id="solution-using-regularized-gauss-newton" class="slide level2">
 <h2>Solution Using Regularized Gauss-Newton</h2>
 <div class="centered-content">
-<div id="ba20de6f" class="cell" data-execution_count="2">
+<div id="d5b65d4b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.000286102294921875 sec elapsed for NM
-0.0025789737701416016 sec elapsed for GNM</code></pre>
+<pre><code>0.2372264862060547 msec elapsed for NM
+2.480030059814453 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-3-output-2.png" width="1270" height="525"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-3-output-2.png" width="1263" height="521"></p>
 </figure>
 </div>
 </div>
@@ -1695,16 +1695,19 @@ h(x) &amp;= 0
 \text{subject to} &amp; x_1^2 + x_2^2 - 1 = 0.
 \end{align}
 </annotation></semantics></math></p>
+</section>
+<section id="minimization-version-no-reg-1" class="slide level2">
+<h2>Minimization Version (No Reg)</h2>
 <div class="centered-content">
-<div id="8f75858f" class="cell" data-execution_count="3">
+<div id="980f1b8e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0001957416534423828 sec elapsed for NM
-0.0003108978271484375 sec elapsed for GNM</code></pre>
+<pre><code>0.19097328186035156 msec elapsed for NM
+0.3352165222167969 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-4-output-2.png" width="1262" height="525"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-4-output-2.png" width="1255" height="521"></p>
 </figure>
 </div>
 </div>
@@ -1750,7 +1753,8 @@ import time
 # Define and solve the CVXPY problem.
 w = cp.Variable(2)
 prob = cp.Problem(cp.Minimize( cp.norm(w - np.array([1.0,1.0] ) ) ),[cp.norm(w)&lt;=1] )
-#                  [A @ x &lt;= beta])
+
+# Solve the problem, and time it
 tic=time.time()
 prob.solve()
 toc=time.time()
@@ -1759,16 +1763,130 @@ toc=time.time()
 # Print result.
 print("\nThe optimal value is", prob.value)
 print("The solution x is x=", w.value)
-print("time taken:",toc-tic)
+print("time taken:",1000*(toc-tic), "msec")
 
 
 </code></pre>
-<div id="d86c8b69" class="cell" data-execution_count="4">
+<div id="53838770" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The optimal value is 0.4142135615262684
 The solution x is x= [0.70710678 0.70710678]
-time taken: 0.002051115036010742</code></pre>
+time taken: 1.6849040985107422 msec</code></pre>
+</div>
+</div>
+</section>
+<section id="barrier-methods" class="slide level2">
+<h2>Barrier Methods</h2>
+<ul>
+<li>Extension of Newton’s method to inequality constrained case <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mtext mathvariant="normal">subject to </mtext><mspace width="0.333em"></mspace></mrow></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>0</mn><mspace width="1.0em"></mspace><mi>i</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>p</mi><mo stretchy="false" form="postfix">}</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize } &amp; f(x)\\
+\text{subject to } &amp; g_i(x) \geq  0 \quad i \in \{1,\dots,p\}
+\end{align}
+</annotation></semantics></math> becomes <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></munderover><mi>B</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize } &amp; f(x) + \sum_{i=1}^p B( g_i(x) )\\
+\end{align}
+</annotation></semantics></math> where <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>τ</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mfrac><mn>1</mn><mi>τ</mi></mfrac><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> B_\tau(y) = -\frac{1}{\tau} \log(y) </annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></msubsup><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi(x) = -\sum_{i=1}^p \log ( g_i(x) )</annotation></semantics></math> is known as the log-barrier function
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\phi(x) \to \infty</annotation></semantics></math> if any <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g_i(x) \to 0</annotation></semantics></math></li>
+</ul></li>
+</ul>
+</section>
+<section id="barrier-methods-1" class="slide level2">
+<h2>Barrier Methods</h2>
+<div id="9166088b" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="constrained_files/figure-revealjs/cell-6-output-1.png" width="1226" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="barrier-methods-algorithm" class="slide level2">
+<h2>Barrier Methods: Algorithm</h2>
+<ol type="1">
+<li>Start from a feasible point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math> and initial <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math> that is small</li>
+<li>Solve unconstrained minimization problem <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mi>x</mi></munder><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></munderover><msub><mi>B</mi><mi>τ</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\min_{x} f(x)+ \sum_{i=1}^p B_\tau(g_i(x))</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x^\star(\tau)</annotation></semantics></math>
+<ul>
+<li>Some implementations take one Newton step per value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math></li>
+</ul></li>
+<li>Increase: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>←</mo><mi>τ</mi><mo>×</mo><mi>ρ</mi><mspace width="1.0em"></mspace></mrow><annotation encoding="application/x-tex">\tau \gets \tau \times \rho\quad</annotation></semantics></math> (eg. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">\rho=10</annotation></semantics></math>)
+<ul>
+<li>Some implementations use duality gap to update <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math></li>
+</ul></li>
+<li>Check for convergence.
+<ul>
+<li>If not converged, go to Step 2 using <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x^\star(\tau)</annotation></semantics></math> as starting point.</li>
+<li>Else, done.</li>
+</ul></li>
+</ol>
+</section>
+<section id="barrier-methods-example" class="slide level2">
+<h2>Barrier Methods: Example</h2>
+<div id="cce98818" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>3.1070709228515625 msec elapsed for NM</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.70710678 0.70710678]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="constrained_files/figure-revealjs/cell-7-output-3.png" width="1266" height="521"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="kkt-conditions" class="slide level2">
+<h2>KKT Conditions</h2>
+<ul>
+<li>FONC for converged unconstrained opt in Barrier algorithm: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mrow><mo stretchy="true" form="prefix">(</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></munderover><mfrac><mrow><mi>−</mi><mn>1</mn></mrow><mi>τ</mi></mfrac><mo>log</mo><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mo>⟹</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></munderover><mfrac><mrow><mi>−</mi><mn>1</mn></mrow><mrow><mi>τ</mi><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>∇</mi><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mrow><mtext mathvariant="normal">let </mtext><mspace width="0.333em"></mspace></mrow><msubsup><mi>μ</mi><mi>i</mi><mo>⋆</mo></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mi>τ</mi><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mo>⟹</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝛍</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>T</mi></msup><mi>∇</mi><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">(LDC for ICO)</mtext></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\nabla f( \bm{x}^\star(\tau) ) +  \nabla \left(\sum_{i=1}^{p}  \frac{-1}{\tau} \log g_i(\bm{x}^\star(\tau))  \right)  &amp;= 0 \\
+\implies \nabla f( \bm{x}^\star(\tau) ) +   \sum_{i=1}^{p}\frac{-1}{\tau g_i(\bm{x}^\star(\tau))} \nabla g_i(\bm{x}^\star(\tau))    &amp;= 0 \\
+\text{let } \mu_i^\star(\tau) = \frac{1}{\tau g_i(\bm{x}^\star(\tau))} &amp; \\
+\implies \nabla f( \bm{x}^\star(\tau) ) -  \left( \bm{\mu}^\star(\tau) \right)^T \nabla \bm{g}(\bm{x}^\star(\tau))    &amp;= 0   &amp;&amp; \text{(LDC for ICO)}\\ 
+\end{align}
+</annotation></semantics></math></li>
+</ul>
+<p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g_i(\bm{x}^\star(\tau)) \geq 0</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>p</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">i \in \{1,\dots,p\}</annotation></semantics></math>, then we satisfy OVC and also MSC.</p>
+<p>What about CSC?</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>μ</mi><mi>i</mi><mo>⋆</mo></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mi>τ</mi><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>⟹</mo><msubsup><mi>μ</mi><mi>i</mi><mo>⋆</mo></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>τ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>τ</mi></mfrac><mo>→</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> as </mtext><mspace width="0.333em"></mspace></mrow><mi>τ</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\mu_i^\star(\tau) = \frac{1}{\tau g_i(\bm{x}^\star(\tau))} \implies  \mu_i^\star(\tau) g_i(\bm{x}^\star(\tau)) = \frac{1}{\tau } \to 0 \text{ as } \tau \to \infty</annotation></semantics></math></p>
+</section>
+<section id="primal-dual-interior-point-methods" class="slide level2">
+<h2>Primal-Dual Interior Point Methods</h2>
+<ul>
+<li>Apply NM (root finding) to this residual function:</li>
+</ul>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>𝐫</mi><mi>τ</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∇</mi><mi>𝐱</mi></msub><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>p</mi></munderover><msubsup><mi>μ</mi><mi>i</mi><mi>T</mi></msubsup><msub><mi>∇</mi><mi>𝐱</mi></msub><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>μ</mi><mn>1</mn></msub><msub><mi>g</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mi>τ</mi></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><msub><mi>μ</mi><mi>p</mi></msub><msub><mi>g</mi><mi>p</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mi>τ</mi></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\bm{r}_\tau(\bm{x},\bm{\mu}) = 
+\begin{bmatrix}
+\nabla_\bm{x} f(\bm{x}) - \sum_{i=1}^{p}\mu_i^T \nabla_\bm{x} g_i(\bm{x}) \\ -\mu_1 g_1(\bm{x})+\frac{1}{\tau}\\ \vdots \\ -\mu_p g_p(\bm{x})+\frac{1}{\tau}
+\end{bmatrix}
+\end{aligned}</annotation></semantics></math>
+<ul>
+<li>Unlike equality constrained optimization, linear system matrix for computing Newton step is not symmetric</li>
+</ul>
+</section>
+<section id="primal-dual-interior-point-methods-example" class="slide level2">
+<h2>Primal-Dual Interior Point Methods: Example</h2>
+<div id="e79b3e7e" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.47206878662109375 msec elapsed for PD-IP</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="constrained_files/figure-revealjs/cell-8-output-2.png" width="1263" height="521"></p>
+</figure>
+</div>
 </div>
 </div>
 
