@@ -1605,15 +1605,15 @@ n_1</annotation></semantics></math> and vector <math display="inline" xmlns="htt
 <section id="solution-using-gauss-newton" class="slide level2">
 <h2>Solution Using (Gauss) Newton</h2>
 <div class="centered-content">
-<div id="882d7640" class="cell" data-execution_count="1">
+<div id="b0367d15" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.21600723266601562 msec elapsed for NM
-0.377655029296875 msec elapsed for GNM</code></pre>
+<pre><code>0.22292137145996094 msec elapsed for NM
+0.34499168395996094 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-2-output-2.png" width="1263" height="521"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-2-output-2.png" width="1270" height="525"></p>
 </figure>
 </div>
 </div>
@@ -1672,15 +1672,15 @@ h(x) &amp;= 0
 <section id="solution-using-regularized-gauss-newton" class="slide level2">
 <h2>Solution Using Regularized Gauss-Newton</h2>
 <div class="centered-content">
-<div id="d5b65d4b" class="cell" data-execution_count="2">
+<div id="b6e13a19" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.2372264862060547 msec elapsed for NM
-2.480030059814453 msec elapsed for GNM</code></pre>
+<pre><code>0.22602081298828125 msec elapsed for NM
+2.5091171264648438 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-3-output-2.png" width="1263" height="521"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-3-output-2.png" width="1270" height="525"></p>
 </figure>
 </div>
 </div>
@@ -1699,15 +1699,15 @@ h(x) &amp;= 0
 <section id="minimization-version-no-reg-1" class="slide level2">
 <h2>Minimization Version (No Reg)</h2>
 <div class="centered-content">
-<div id="980f1b8e" class="cell" data-execution_count="3">
+<div id="a8c54370" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.19097328186035156 msec elapsed for NM
-0.3352165222167969 msec elapsed for GNM</code></pre>
+<pre><code>0.18787384033203125 msec elapsed for NM
+0.28586387634277344 msec elapsed for GNM</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-4-output-2.png" width="1255" height="521"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-4-output-2.png" width="1262" height="525"></p>
 </figure>
 </div>
 </div>
@@ -1767,12 +1767,12 @@ print("time taken:",1000*(toc-tic), "msec")
 
 
 </code></pre>
-<div id="53838770" class="cell" data-execution_count="4">
+<div id="01181a25" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The optimal value is 0.4142135615262684
 The solution x is x= [0.70710678 0.70710678]
-time taken: 1.6849040985107422 msec</code></pre>
+time taken: 5.220890045166016 msec</code></pre>
 </div>
 </div>
 </section>
@@ -1797,11 +1797,11 @@ time taken: 1.6849040985107422 msec</code></pre>
 </section>
 <section id="barrier-methods-1" class="slide level2">
 <h2>Barrier Methods</h2>
-<div id="9166088b" class="cell" data-execution_count="5">
+<div id="b352d0f5" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-6-output-1.png" width="1226" height="523"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-6-output-1.png" width="1227" height="529"></p>
 </figure>
 </div>
 </div>
@@ -1828,17 +1828,15 @@ time taken: 1.6849040985107422 msec</code></pre>
 </section>
 <section id="barrier-methods-example" class="slide level2">
 <h2>Barrier Methods: Example</h2>
-<div id="cce98818" class="cell" data-execution_count="6">
+<div id="ff3ef1b6" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
-<pre><code>3.1070709228515625 msec elapsed for NM</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[0.70710678 0.70710678]</code></pre>
+<pre><code>3.1349658966064453 msec elapsed for NM
+[0.70710678 0.70710678]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="constrained_files/figure-revealjs/cell-7-output-3.png" width="1266" height="521"></p>
+<p><img data-src="constrained_files/figure-revealjs/cell-7-output-2.png" width="1266" height="521"></p>
 </figure>
 </div>
 </div>
@@ -1877,9 +1875,9 @@ time taken: 1.6849040985107422 msec</code></pre>
 </section>
 <section id="primal-dual-interior-point-methods-example" class="slide level2">
 <h2>Primal-Dual Interior Point Methods: Example</h2>
-<div id="e79b3e7e" class="cell" data-execution_count="7">
+<div id="9a966e48" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
-<pre><code>0.47206878662109375 msec elapsed for PD-IP</code></pre>
+<pre><code>0.7550716400146484 msec elapsed for PD-IP</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
