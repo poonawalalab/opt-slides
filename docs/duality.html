@@ -444,8 +444,8 @@ d^\star &amp;= \mathrm{sup}_{\bm{\lambda},\bm{\mu}\geq 0}  \mathrm{inf}_{\bm{x} 
 <h1>Dual Linear Programs</h1>
 
 </section>
-<section id="standard-form-linear-program" class="slide level2">
-<h2>Standard Form Linear Program</h2>
+<section id="symmetric-form-linear-program" class="slide level2">
+<h2>Symmetric Form Linear Program</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1058,15 +1058,83 @@ f(\bm{x}(\bm{0})) \nabla_{\bm{b}}\bm{x}(\bm{0}) = \nabla f(\bm{x}^\ast)
 </section>
 <section id="local-duality" class="slide level2">
 <h2>Local Duality</h2>
+<p>To solve the dual optimization problem, we need to solve</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>max</mo><mrow><mi>𝛌</mi><mo>≥</mo><mn>0</mn></mrow></munder><mi>q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\max_{\bm{\lambda}\geq0}  q(\bm{\lambda},\bm{\mu}) 
+\end{align}</annotation></semantics></math></p>
 <p>The dual function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">q(\bm{\lambda},\bm{\mu})</annotation></semantics></math> is defined using a <strong>constrained</strong> optimization problem:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>i</mi><mi>n</mi><msub><mi>f</mi><mrow><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi></mrow></msub><mi>ℒ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">q(\bm{\lambda},\bm{\mu}) = inf_{\bm{x}\in \Omega} \mathcal L(\bm{x}, \bm{\lambda}, \bm{\mu})</annotation></semantics></math></p>
-<div class="callout-warn">
-<p>Can we work with an <strong>unconstrained</strong> approximation:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>q</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>i</mi><mi>n</mi><msub><mi>f</mi><mi>𝐱</mi></msub><mi>ℒ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \hat q(\bm{\lambda},\bm{\mu}) = inf_{\bm{x}} \mathcal L(\bm{x}, \bm{\lambda}, \bm{\mu})</annotation></semantics></math></p>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>&nbsp;</strong></p>
 </div>
-<p>Local duality says ‘yes’ in some cases.</p>
+<div class="callout-content">
+<p>Can we replace the inner constrained optimization with <strong>unconstrained local</strong> optimization?:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>Modified&nbsp;Dual&nbsp;Opt:  </mo><munder><mo>max</mo><mrow><mi>𝛌</mi><mo>≥</mo><mn>0</mn></mrow></munder><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\operatorname{Modified\ Dual\ Opt:\quad}\max_{\bm{\lambda}\geq0}  \phi(\bm{\lambda},\bm{\mu}) 
+\end{align}</annotation></semantics></math> where</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>i</mi><mi>n</mi><msub><mi>f</mi><mrow><mi>𝐱</mi><mo>∈</mo><mi>𝒩</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>⋆</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mi>ℒ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \phi(\bm{\lambda},\bm{\mu}) = inf_{\bm{x} \in \mathcal N(\bm{x}^\star)} \mathcal L(\bm{x}, \bm{\lambda}, \bm{\mu})</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<p>Local duality answers ‘yes’ in some cases.</p>
 </section>
-<section id="local-duality-1" class="slide level2 smaller">
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><mi>x</mi><mi>y</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; -xy \\
+\text{subject to} &amp; (x-3)^2 + y^2 = 5.
+\end{align}
+</annotation></semantics></math></p>
+<div class="columns" style="font-size:80%">
+<div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Dual Function</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><msup><mi>x</mi><mo>⋆</mo></msup><msup><mi>y</mi><mo>⋆</mo></msup><mo>=</mo><mi>−</mi><mn>8</mn><mrow><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix" mathvariant="normal">(</mo><mi mathvariant="normal">a</mi><mspace width="0.222em"></mspace><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mo stretchy="true" form="postfix" mathvariant="normal">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">q(\lambda) = -x^\star y^{\star} =  -8 \operatorname{\quad(a\ constant)}</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>First-Order Necessary Conditions</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><mi>y</mi><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>6</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>λ</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><mi>x</mi><mo>−</mo><mn>2</mn><mi>y</mi><mi>λ</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+-y - (2x - 6)\lambda &amp;= 0 \\
+-x - 2y\lambda &amp;= 0.
+\end{align}
+</annotation></semantics></math> together with the constraint. These equations have a solution at <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo>⋆</mo></msup><mo>=</mo><mn>4</mn><mo>,</mo><mspace width="1.0em"></mspace><msup><mi>y</mi><mo>⋆</mo></msup><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="1.0em"></mspace><msup><mi>λ</mi><mo>⋆</mo></msup><mo>=</mo><mi>−</mi><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+x^\star = 4, \quad y^{\star} = 2, \quad \lambda^{\star} = -1.
+</annotation></semantics></math> The Hessian of the corresponding Lagrangian is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐋</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{L} = \begin{bmatrix} 2 &amp; -1 \\ -1 &amp; 2 \end{bmatrix}. </annotation></semantics></math> Since this is positive definite, we conclude that the solution obtained is a local minimum (it is, in fact, a global minimum).</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Local Duality</strong></p>
+</div>
+<div class="callout-content">
+<p>Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐋</mi><annotation encoding="application/x-tex">\bm{L}</annotation></semantics></math> is positive definite, we can apply the local duality theory near this solution. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>min</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>−</mi><mi>x</mi><mi>y</mi><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\phi(\lambda) = \operatorname{min}_{x,y} \left\{-xy - \lambda \left[(x-3)^2 + y^2 - 5\right]\right\},
+</annotation></semantics></math> which leads to <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>−</mi><mn>4</mn><mi>λ</mi><mo>−</mo><mn>4</mn><msup><mi>λ</mi><mn>3</mn></msup><mo>+</mo><mn>80</mn><msup><mi>λ</mi><mn>5</mn></msup></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><msup><mi>λ</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
+\phi(\lambda) = \frac{-4\lambda - 4\lambda^3 + 80\lambda^5}{(4\lambda^2 - 1)^2}
+</annotation></semantics></math> valid for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&lt;</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\lambda &lt; -\frac{1}{2}</annotation></semantics></math>. It can be verified that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> has a local maximum at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda = -1</annotation></semantics></math>. Plugging this value back in <a href="#/eq-unc" class="quarto-xref">Equation&nbsp;8</a> and maximizing (unconstrained) over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> yields the same maximizers as before.</p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="local-duality-2" class="slide level2 smaller">
 <h2>Local Duality</h2>
 <div class="columns" style="font-size:90%">
 <div class="column" style="width:50%;">
@@ -1136,7 +1204,7 @@ f(\bm{x}(\bm{0})) \nabla_{\bm{b}}\bm{x}(\bm{0}) = \nabla f(\bm{x}^\ast)
 <p>has a solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> is near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> because <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐋</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{L}^\ast</annotation></semantics></math> is positive definite.</p>
 </div></div>
 </section>
-<section id="local-duality-2" class="slide level2 smaller">
+<section id="local-duality-3" class="slide level2 smaller">
 <h2>Local Duality</h2>
 <div class="columns" style="font-size:90%">
 <div class="callout callout-note no-icon callout-style-simple">
@@ -1250,50 +1318,6 @@ f(\bm{x}(\bm{0})) \nabla_{\bm{b}}\bm{x}(\bm{0}) = \nabla f(\bm{x}^\ast)
 </div>
 </div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>−</mi><mi>x</mi><mi>y</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
-\begin{align}
-\operatorname{minimize} &amp; -xy \\
-\text{subject to} &amp; (x-3)^2 + y^2 = 5.
-\end{align}
-</annotation></semantics></math></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>First-Order Necessary Conditions</strong></p>
-</div>
-<div class="callout-content">
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><mi>y</mi><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>6</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>λ</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>−</mi><mi>x</mi><mo>−</mo><mn>2</mn><mi>y</mi><mi>λ</mi></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
-\begin{align}
--y - (2x - 6)\lambda &amp;= 0 \\
--x - 2y\lambda &amp;= 0.
-\end{align}
-</annotation></semantics></math> together with the constraint. These equations have a solution at <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>y</mi><mo>=</mo><mn>2</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>λ</mi><mo>=</mo><mi>−</mi><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
-x = 4, \quad y = 2, \quad \lambda = -1.
-</annotation></semantics></math> The Hessian of the corresponding Lagrangian is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐋</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{L} = \begin{bmatrix} 2 &amp; -1 \\ -1 &amp; 2 \end{bmatrix}. </annotation></semantics></math> Since this is positive definite, we conclude that the solution obtained is a local minimum (it is, in fact, a global minimum).</p>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Local Duality</strong></p>
-</div>
-<div class="callout-content">
-<p>Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐋</mi><annotation encoding="application/x-tex">\bm{L}</annotation></semantics></math> is positive definite, we can apply the local duality theory near this solution. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>min</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>−</mi><mi>x</mi><mi>y</mi><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">
-\phi(\lambda) = \operatorname{min}_{x,y} \left\{-xy - \lambda \left[(x-3)^2 + y^2 - 5\right]\right\},
-</annotation></semantics></math> which leads to <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>−</mi><mn>4</mn><mi>λ</mi><mo>−</mo><mn>4</mn><msup><mi>λ</mi><mn>3</mn></msup><mo>+</mo><mn>80</mn><msup><mi>λ</mi><mn>5</mn></msup></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><msup><mi>λ</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">
-\phi(\lambda) = \frac{-4\lambda - 4\lambda^3 + 80\lambda^5}{(4\lambda^2 - 1)^2}
-</annotation></semantics></math> valid for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>&lt;</mo><mi>−</mi><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\lambda &lt; -\frac{1}{2}</annotation></semantics></math>. It can be verified that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> has a local maximum at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda = -1</annotation></semantics></math>. Plugging this value back in <a href="#/eq-unc" class="quarto-xref">Equation&nbsp;8</a> and maximizing (unconstrained) over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> yields the same maximizers as before.</p>
-</div>
-</div>
-</div>
-</div></div>
-</section>
 <section id="inequality-constraints" class="slide level2 smaller">
 <h2>Inequality Constraints</h2>
 <p><span id="eq-optineq"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐱</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>𝐡</mi><mo>∈</mo><msup><mi>ℂ</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mi>m</mi></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mspace width="0.222em"></mspace></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>𝟎</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>𝐠</mi><mo>∈</mo><msup><mi>C</mi><mn>2</mn></msup><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mi>p</mi></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>13</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
@@ -1342,6 +1366,19 @@ x = 4, \quad y = 2, \quad \lambda = -1.
 </ul></li>
 </ul>
 </section>
+<section id="dual-steepest-ascent" class="slide level2 smaller">
+<h2>Dual Steepest Ascent</h2>
+<p>The modified dual optimization problem is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><munder><mo>max</mo><mrow><mi>𝛌</mi><mo>≥</mo><mn>0</mn></mrow></munder><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align}
+\max_{\bm{\lambda}\geq0}  \phi(\bm{\lambda},\bm{\mu}) 
+\end{align}</annotation></semantics></math> which has the same optimum as the true dual optimization problem, under appropriate conditions.</p>
+<p>From Lemma 1, the gradient at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(\bm{\lambda},\bm{\mu})</annotation></semantics></math> is given by the constraint functions evaluated at the optimum of <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mi>𝐱</mi></munder><mi>ℒ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\min_{\bm{x} } \mathcal L(\bm{x}, \bm{\lambda}, \bm{\mu})</annotation></semantics></math></p>
+<p>To solve the modified dual optimization problem we run the following iterations:</p>
+<ol type="1">
+<li>Find the unconstrained minimizer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math> in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> of the Lagrangian with current iterates <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mi>k</mi></msub><mo>,</mo><msub><mi>𝛍</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bm{\lambda}_k,\bm{\mu}_k</annotation></semantics></math></li>
+<li>Use this minimizer to (easily) calculate the gradient of the modified dual function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi(\bm{\lambda},\bm{\mu})</annotation></semantics></math> at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mi>k</mi></msub><mo>,</mo><msub><mi>𝛍</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bm{\lambda}_k,\bm{\mu}_k</annotation></semantics></math></li>
+<li>Get the next iterate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>𝛍</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\bm{\lambda}_{k+1},\bm{\mu}_{k+1}</annotation></semantics></math> by taking a step in the direction of this gradient</li>
+</ol>
+</section>
 <section id="the-lagrangian-method-dual-steepest-ascent" class="slide level2 smaller">
 <h2>The Lagrangian Method: Dual Steepest Ascent</h2>
 <div style="font-size:90%">
@@ -1372,6 +1409,298 @@ x = 4, \quad y = 2, \quad \lambda = -1.
 </ul></li>
 </ul>
 </div>
+</section></section>
+<section>
+<section id="the-augmented-lagrangian-and-interpretations" class="title-slide slide level1 center">
+<h1>The Augmented Lagrangian and Interpretations</h1>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>One of the most effective general classes of NLP methods is the <em>augmented Lagrangian methods</em>.</li>
+<li>Alternatively referred to as <em>methods of multiplier</em>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-augmented-lagrangian" class="slide level2">
+<h2>The Augmented Lagrangian</h2>
+<div style="font-size:68%">
+<ul>
+<li>These methods can be veiwed as a combination of penalty functions and local duality methods.
+<ul>
+<li>The two concepts work together to eliminate many of the disadvantages associated with either method alone.</li>
+</ul></li>
+<li>The augmented Lagrangian for the equality constrained problem is the function <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex"> \ell_c(\bm{x}, \bm{\lambda}) = f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}) + \frac{c}{2}\left|\bm{h}(\bm{x})\right|^2 </annotation></semantics></math> for some positive constant <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.</li>
+<li>From a penalty function viewpoint, the augmented Lagrangian, for a fixed value of the vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> is simply the Lagrange penalty function for the problem <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2, \\
+\text{subject to} &amp; \bm{h}(\bm{x}) = \bm{0}, \quad \bm{x} \in \Omega
+\end{align}
+</annotation></semantics></math></li>
+<li>This problem is clearly equivalent to the original equality constrained problem since the combinations of the constraints adjoined to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x})</annotation></semantics></math> do not affect the minimum point or the minimum value.</li>
+<li>A typical step of an augmented Lagrangian method starts with a vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝛌</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{\lambda}_k</annotation></semantics></math>. Then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{\lambda}_k)</annotation></semantics></math> is found as the minimum point of <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>arg</mo><mo>min</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛌</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">subject to</mtext><mspace width="1.0em"></mspace><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\bm{x}(\bm{\lambda}_k) = \operatorname{arg} \operatorname{min} f(\bm{x}) - 
+\bm{\lambda}_k^\top \bm{h}(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2, 
+\quad \text{subject to} \quad \bm{x} \in \Omega.
+</annotation></semantics></math></li>
+<li>Next, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝛌</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{\lambda}_k</annotation></semantics></math> is updated to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\bm{\lambda}_{k+1}</annotation></semantics></math>: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\bm{\lambda}_{k+1} = \bm{\lambda}_k - c\bm{h}(\bm{x}(\bm{\lambda}_k)). </annotation></semantics></math></li>
+</ul>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<div class="centered-content">
+<div id="5473b2ae" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.5199909210205078 msec elapsed for NM
+[0.70710678 0.70710678]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="duality_files/figure-revealjs/cell-2-output-2.png" width="1263" height="521"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-augmented-lagrangian-1" class="slide level2 smaller">
+<h2>The Augmented Lagrangian</h2>
+<div style="font-size:90%">
+<ul>
+<li>Whereas the original Lagrangian may not be convex near the solution, and hence the standard duality method cannot be applied, the term <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2</annotation></semantics></math> tends to “convexify” the Lagrangian.
+<ul>
+<li>For sufficiently large <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>, the Lagrangian will indeed be locally convex.</li>
+<li>Thus, the duality method can be employed, and the corresponding dual problem can be solved by an iterative process in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math>.</li>
+<li>This viewpoint leads to the development of additional multiplier adjustment processes.</li>
+</ul></li>
+<li>The main iteration in augmented Lagrangian methods is with respect to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math>.
+<ul>
+<li>The penalty parameter <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> may also be adjusted during the process!</li>
+<li>As in ordinary penalty function methods, the sequence of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>’s is usually preselected;
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> is either held fixed,</li>
+<li>is increased toward a finite value,</li>
+<li>or tends (slowly) toward infinity.</li>
+</ul></li>
+<li>In this method, it is not necessary for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> to go to infinity.
+<ul>
+<li>In fact, it may remain of relatively modest value.</li>
+<li>The ill-conditioning usually associated with the penalty function approach is mediated.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-penalty-method" class="slide level2">
+<h2>Example: Penalty Method</h2>
+<div class="centered-content">
+<div id="266a6bfe" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9369850158691406 msec elapsed for NM
+[0.70710678 0.70710678]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="duality_files/figure-revealjs/cell-3-output-2.png" width="1263" height="521"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-penalty-viewpoint" class="slide level2 smaller">
+<h2>The Penalty Viewpoint</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> be <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-by-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> symmetric matrices. Suppose that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> is positive semidefinite and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> is positive definite on the subspace <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐁</mi><mi>𝐱</mi></mrow><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{Bx} = \bm{0}</annotation></semantics></math>. Then there is a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mo>*</mo></msup><annotation encoding="application/x-tex">c^\ast</annotation></semantics></math> such that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≥</mo><msup><mi>c</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">c \geq c^\ast</annotation></semantics></math> the matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mo>+</mo><mi>c</mi><mi>𝐁</mi></mrow><annotation encoding="application/x-tex">\bm{A} + c\bm{B}</annotation></semantics></math> is positive definite.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose to the contrary that for every <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> there were an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math> with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\bm{x}_k| = 1</annotation></semantics></math> such that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>𝐱</mi><mi>k</mi><mi>⊤</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐀</mi><mo>+</mo><mi>k</mi><mi>𝐁</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mi>k</mi></msub><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bm{x}_k^\top (\bm{A} + k\bm{B})\bm{x}_k \leq 0</annotation></semantics></math>. The sequence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\left\{\bm{x}_k\right\}</annotation></semantics></math> must have a convergent subsequence converging to a limit <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{\bm{x}}</annotation></semantics></math>. Now since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>𝐱</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐁</mi><msub><mi>𝐱</mi><mi>k</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bm{x}_k^\top \bm{B} \bm{x}_k \geq 0</annotation></semantics></math>, it follows that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mi>⊤</mi></msup><mi>𝐁</mi><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bar{\bm{x}}^\top \bm{B} \bar{\bm{x}} = 0</annotation></semantics></math>. It also follows that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mi>⊤</mi></msup><mi>𝐀</mi><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bar{\bm{x}}^\top \bm{A} \bar{\bm{x}} \leq 0</annotation></semantics></math>. However, this contradicts the hypothesis of the lemma.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><p>This lemma applies to the Hessian of the augmented Lagrangian, evaluated at the optimal solution pair <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math>. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>𝐋</mi><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>,</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐇</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>c</mi><mi>∇</mi><mi>𝐡</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐋</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>c</mi><mi>∇</mi><mi>𝐡</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>∇</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\bm{L}_c(\bm{x}^\ast, \bm{\lambda}^\ast) = \bm{F}(\bm{x}^\ast) - 
+\left(\bm{\lambda}^\ast\right)^\top\bm{H}(\bm{x}^\ast) + 
+c\nabla \bm{h}(\bm{x}^\ast)^\top \bm{h}(\bm{x}^\ast) = \bm{L}(\bm{x}^\ast) + 
+c\nabla \bm{h}(\bm{x}^\ast)^\top \nabla \bm{h}(\bm{x}^\ast).
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li>The first term, the Hessian of the normal Lagrangian, is positive definite on the subspace <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\nabla \bm{h}(\bm{x}^\ast) = \bm{0}</annotation></semantics></math>. This corresponds to the matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> in the lemma.</li>
+<li>The matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>𝐡</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>∇</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla \bm{h}(\bm{x}^\ast)^\top \nabla \bm{h}(\bm{x}^\ast)</annotation></semantics></math> is positive semidefinite and corresponds to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> in the lemma.
+<ul>
+<li>It follows that there is a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mo>*</mo></msup><annotation encoding="application/x-tex">c^\ast</annotation></semantics></math> such that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><msup><mi>c</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">c &gt; c^\ast</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐋</mi><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>,</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{L}_c(\bm{x}^\ast, \bm{\lambda}^\ast)</annotation></semantics></math> is positive definite.</li>
+</ul></li>
+</ul></li>
+<li><p>This leads directly to the first basic result concerning augmented Lagrangian.</p></li>
+</ul>
+</section>
+<section id="the-penalty-viewpoint-1" class="slide level2 smaller">
+<h2>The Penalty Viewpoint</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proposition</strong></p>
+</div>
+<div class="callout-content">
+<p>Assume that the second-order sufficiency conditions for a local minimum are satisfied at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math>. Then there is a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>c</mi><mo>*</mo></msup><annotation encoding="application/x-tex">c^\ast</annotation></semantics></math> such that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≥</mo><msup><mi>c</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">c \geq c^\ast</annotation></semantics></math>, the augmented Lagrangian <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ell_c(\bm{x}, \bm{\lambda}^\ast)</annotation></semantics></math> has a local minimum point at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>By continuity, for any <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math>, the augmented Lagrangian has a unique local minimum point near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>.</li>
+<li>This correspondence defines a continuous function.
+<ul>
+<li>If a value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> can be found such that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{h}(\bm{x}(\bm{\lambda})) = \bm{0}</annotation></semantics></math>, then that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> must in fact be <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math>.
+<ul>
+<li>This is because <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{\lambda})</annotation></semantics></math> satisfies the necessary conditions of the original problem.</li>
+</ul></li>
+</ul></li>
+<li>Therefore, the problem of determining the proper value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> can be viewed as one of solving the equation <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{h}(\bm{x}(\bm{\lambda})) = \bm{0}. </annotation></semantics></math></li>
+<li>For this purpose the iterative process <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> \bm{\lambda}_{k+1} = \bm{\lambda}_k - c \bm{h}(\bm{x}(\bm{\lambda}_k)), </annotation></semantics></math> is a method of successive approximation (such as fixed-point iteration).
+<ul>
+<li>This process will converge linearly in a neighborhood around <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> although a rigorous proof is somewhat complex.</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-2" class="slide level2 smaller">
+<h2>Example</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>y</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>=</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; 2x^2 + 2xy + y^2 - 2y, \\
+\text{subject to} &amp; x = 0.
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li>The augmented Lagrangian for this problem is</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>y</mi><mo>−</mo><mi>λ</mi><mi>x</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mi>x</mi><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex"> \ell_c(x, y, \lambda) = 2x^2 + 2xy + y^2 - 2y - \lambda x + \frac{1}{2}cx^2. </annotation></semantics></math></p>
+<ul>
+<li>The minimum can be found analytically to be</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mi>−</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>−</mo><mi>λ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>y</mi><mo>=</mo><mfrac><mrow><mn>4</mn><mo>+</mo><mi>c</mi><mo>−</mo><mi>λ</mi></mrow><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+x = \frac{-(2-\lambda)}{2+c}, \quad y = \frac{4+c-\lambda}{2+c}.
+</annotation></semantics></math></p>
+<ul>
+<li>Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">h(x, y) = x</annotation></semantics></math> in this example, it follows that the iterative process for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\lambda_k</annotation></semantics></math> is</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>λ</mi><mi>k</mi></msub><mo>+</mo><mfrac><mrow><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>−</mo><msub><mi>λ</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>2</mn><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>λ</mi><mi>k</mi></msub><mo>+</mo><mfrac><mrow><mn>2</mn><mi>c</mi></mrow><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\lambda_{k+1} = \lambda_k + \frac{c(2-\lambda_k)}{2+c} = \left(\frac{2}{2+c}\right)\lambda_k + \frac{2c}{2+c}.
+</annotation></semantics></math></p>
+<ul>
+<li>This converges to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\lambda = 2</annotation></semantics></math> for any <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c &gt; 0</annotation></semantics></math>.</li>
+<li>The coefficient <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>2</mn><mrow><mn>2</mn><mo>+</mo><mi>c</mi></mrow></mfrac><annotation encoding="application/x-tex">\frac{2}{2+c}</annotation></semantics></math> governs the rate of convergence.
+<ul>
+<li>The rate improves as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> is increased.</li>
+</ul></li>
+</ul>
+</section>
+<section id="geometric-interpretation" class="slide level2 smaller">
+<h2>Geometric Interpretation</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>The minimum of the augmented Lagrangian at step <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> can be expressed in terms of the primal function as follows:</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>min</mo><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><munder><mo>min</mo><mi>𝐱</mi></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛌</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><munder><mo>min</mo><mrow><mi>𝐱</mi><mo>,</mo><mi>𝐲</mi></mrow></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛌</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐲</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>:</mo><mspace width="0.167em"></mspace><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><munder><mo>min</mo><mi>𝐲</mi></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛌</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐲</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{min} \ell_c(\bm{x}, \bm{\lambda}_k) &amp;= \operatorname{min}_\bm{x} 
+\left\{ f(\bm{x}) - \bm{\lambda}_k^\top \bm{h}(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2 \right\} \\
+&amp;= \operatorname{min}_{\bm{x}, \bm{y}} \left\{ f(\bm{x}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2: \, \bm{h}(\bm{x}) = \bm{y} \right\} \\
+&amp;= \operatorname{min}_\bm{y} \left\{ \omega(\bm{y}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2 \right\},
+\end{align}
+</annotation></semantics></math></p>
+<p>where the minimization with respect to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐲</mi><annotation encoding="application/x-tex">\bm{y}</annotation></semantics></math> is taken to be locally near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{y} = \bm{0}</annotation></semantics></math>.</p>
+<ul>
+<li>In general, if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>𝐤</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(\bm{\lambda_k})</annotation></semantics></math> minimizes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ell_c(\bm{x}, \bm{\lambda}_k)</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐲</mi><mi>k</mi></msub><mo>=</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>𝐤</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{y}_k = \bm{h}(\bm{x}(\bm{\lambda_k}))</annotation></semantics></math> is the minimum of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msubsup><mi>𝛌</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐲</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>c</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\omega(\bm{y}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2</annotation></semantics></math>.
+<ul>
+<li>At that point we have <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>∇</mi><mi>ω</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐲</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>+</mo><mi>c</mi><msub><mi>𝐲</mi><mi>k</mi></msub><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>∇</mi><mi>ω</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐲</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><msub><mi>𝐲</mi><mi>k</mi></msub><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐲</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex"> 
+\begin{align} 
+&amp;\nabla \omega (\bm{y}_k)^\top + c\bm{y}_k = \bm{\lambda}_k  \\
+&amp;\nabla \omega(\bm{y}_k)^\top = \bm{\lambda}_k - c \bm{y}_k = \bm{\lambda}_k - c \bm{h}(\bm{x}(\bm{y}_k)). 
+\end{align}
+</annotation></semantics></math></li>
+</ul></li>
+<li>It follows that for the next multiplier we have <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>∇</mi><mi>ω</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐲</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\bm{\lambda}_{k+1} = \bm{\lambda}_k - c\bm{h}(\bm{x}(\bm{\lambda}_k)) = \nabla \omega (\bm{y}_k)^\top.
+</annotation></semantics></math></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<center>
+<img src="./contents/assets/primal_and_augmented.png" width="95%" img="">
+</center>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Primal function</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mo>min</mo><mrow><mo stretchy="true" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> \omega(\bm{y}) \triangleq \operatorname{min}\left\{ f(\bm{x}): \bm{h}(\bm{x}) = \bm{y} \right\}, </annotation></semantics></math> where the minimum is understood to be taken locally near <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>.</p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega(\bm{0}) = f(\bm{x}^\ast)</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>ω</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>𝟎</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>=</mo><msup><mi>𝛌</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\nabla \omega(\bm{0})^\top = \bm{\lambda}^\ast</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="alternating-direction-method-of-multipliers" class="title-slide slide level1 center">
+<h1>Alternating Direction Method of Multipliers</h1>
+
+</section>
+<section id="problem-set-up" class="slide level2 smaller">
+<h2>Problem Set-Up</h2>
+<ul>
+<li>Consider the convex minimization model with linear/affine constraints and an objective function that is the sum of two separable functions with two blocks of variables:</li>
+</ul>
+<p><span id="eq-septwo"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>f</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>f</mi><mi>i</mi></msub><mo>:</mo><msup><mi>ℝ</mi><msub><mi>n</mi><mi>i</mi></msub></msup><mo>→</mo><mi>ℝ</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>=</mo><mi>𝐛</mi><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>𝐛</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>m</mi></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐱</mi><mn>1</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>𝐱</mi><mn>2</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>2</mn></msub></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>Ω</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℝ</mi><msub><mi>n</mi><mi>i</mi></msub></msup></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>14</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f_1(\bm{x}^1) + f_2(\bm{x}^2), &amp;  f_i: \mathbb{R}^{n_i} \rightarrow \mathbb{R}, \\
+\text{subject to} &amp; \bm{A}_1 \bm{x}^1 + \bm{A}_2 \bm{x}^2 = \bm{b}, &amp; \bm{b} \in \mathbb{R}^m \\
+&amp; \bm{x}^1 \in \Omega_1, \; \bm{x}^2 \in \Omega_2 &amp; \Omega_i \subseteq \mathbb{R}^{n_i}
+\end{align} 
+ \qquad(14)</annotation></semantics></math></span></p>
+<ul>
+<li><p>Then, the augmented Lagrangian function for <a href="#/eq-septwo" class="quarto-xref">Equation&nbsp;14</a> would be <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>f</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda}) = f_1(\bm{x}^1) + f_2(\bm{x}^2) - \bm{\lambda}^\top
+\left(\bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right) + \frac{c}{2}
+\left| \bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right|^2.
+</annotation></semantics></math></p></li>
+<li><p>In contrast to the method of multipliers that we previously covered, the alternating direction method of multipliers (ADMM) is to (approximately) minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda})</annotation></semantics></math> in an alternative order:</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><mo>arg</mo><munder><mo>min</mo><mrow><msup><mi>𝐱</mi><mn>1</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>1</mn></msub></mrow></munder><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msubsup><mi>𝐱</mi><mi>k</mi><mn>2</mn></msubsup><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><mo>arg</mo><munder><mo>min</mo><mrow><msup><mi>𝐱</mi><mn>2</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>2</mn></msub></mrow></munder><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\bm{x}_{k+1}^1 &amp;:= \operatorname{arg}\operatorname{min}_{\bm{x}^1 \in \Omega_1} 
+\ell_c(\bm{x}^1, \bm{x}_k^2, \bm{\lambda}_k), \\
+\bm{x}_{k+1}^2 &amp;:= \operatorname{arg}\operatorname{min}_{\bm{x}^2 \in \Omega_2} 
+\ell_c(\bm{x}_{k+1}^1, \bm{x}^2, \bm{\lambda}_k), \\
+\bm{\lambda}_{k+1} &amp;:= \bm{\lambda}_k - c\left( \bm{A}_1\bm{x}_{k+1}^1 + \bm{A}_2\bm{x}_{k+1}^2 - \bm{b} \right).
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li>The idea is that each of the smaller-block minimization problems can be solved more efficiently or even in closed-forms for certain cases.</li>
+</ul>
 
 </section></section>
 
