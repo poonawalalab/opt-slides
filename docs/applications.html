@@ -314,13 +314,13 @@ y &amp;= L_1 \sin q_1 + L_{c2} \sin (q_1+q_2) \\
 <section id="example-logistic-regression" class="slide level2 smaller">
 <h2>Example: Logistic Regression</h2>
 <div class="centered-content">
-<div id="6537f034" class="cell" data-execution_count="1">
+<div id="c8903eb8" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The optimal value is 12.37578346960808
 A solution x is
-[2.35589697 2.25825204]
-[-6.84717488]</code></pre>
+w =  [2.35589697 2.25825204]
+beta =  [-6.84717488]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -363,8 +363,8 @@ prob.solve()
 # Print result.
 print("\nThe optimal value is", prob.value)
 print("A solution x is")
-print(w.value)
-print(beta.value)
+print("w = ", w.value)
+print("beta = ",beta.value)
 
 
 
@@ -1008,6 +1008,42 @@ td, th {
 \end{align}
 </annotation></semantics></math></p>
 <p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>i</mi></msub><annotation encoding="application/x-tex">z_i</annotation></semantics></math> is a slack variable.</p>
+</section>
+<section id="example-a-supply-chain-problem" class="slide level2 smaller">
+<h2>Example – A Supply-Chain Problem</h2>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>A warehouse is buying and selling stock of a certain commodity in order to maximize profit over a certain length of time.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>: Warehouse capacity.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>: The amount of commodity sold during the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msup><annotation encoding="application/x-tex">i^{\mathrm{th}}</annotation></semantics></math> period.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>i</mi></msub><annotation encoding="application/x-tex">u_i</annotation></semantics></math>: The amount of commodity bought during the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msup><annotation encoding="application/x-tex">i^{\mathrm{th}}</annotation></semantics></math> period.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>: level of stock in the warehouse at the beginning of period the last period.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>: Number of periods.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>: The unit price of the commodity during the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msup><annotation encoding="application/x-tex">i^{\mathrm{th}}</annotation></semantics></math> period.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mi>i</mi></msub><annotation encoding="application/x-tex">r_i</annotation></semantics></math>: The unit cost of holding the commodity during the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi mathvariant="normal">t</mi><mi mathvariant="normal">h</mi></mrow></msup><annotation encoding="application/x-tex">i^{\mathrm{th}}</annotation></semantics></math> period.</li>
+<li>The warehouse is originally empty and is required to be empty at the end of</li>
+</ul>
+</div></div>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mo>maximize</mo><mrow><mi>𝐱</mi><mo>,</mo><mi>𝐮</mi><mo>,</mo><mi>𝐬</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐩</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐬</mi><mo>−</mo><mi>𝐮</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝐫</mi><mi>⊤</mi></msup><mi>𝐱</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><msub><mi>u</mi><mi>i</mi></msub><mo>−</mo><msub><mi>s</mi><mi>i</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><msub><mi>u</mi><mi>n</mi></msub><mo>=</mo><msub><mi>s</mi><mi>n</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐱</mi><mo>≤</mo><mi>C</mi><mn>𝟏</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐱</mi><mo>≥</mo><mn>0</mn><mo>,</mo><mi>𝐮</mi><mo>≥</mo><mn>0</mn><mo>,</mo><mi>𝐬</mi><mo>≥</mo><mn>0</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize}_{\bm{x},\bm{u},\bm{s}} &amp;  \bm{p}^\top(\bm{s}-\bm{u}) - \bm{r}^\top \bm{x}\\
+\text{subject to} &amp; x_{i+1} = x_i + u_i - s_i, \quad i = 1, 2, \ldots, n-1, \\
+&amp;  x_1 = 0\\
+&amp;  x_n +u_n= s_n\\
+&amp; \bm{x} \leq  C \bm{1}, \\
+&amp; \bm{x} \geq 0, \bm{u} \geq 0, \bm{s} \geq 0
+\end{align}
+</annotation></semantics></math></p>
 </section>
 <section id="example-6-linear-classifier-and-support-vector-machine" class="slide level2 smaller">
 <h2><span style="font-size: 78%">Example 6 – Linear Classifier and Support Vector Machine</span></h2>
